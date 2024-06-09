@@ -25,6 +25,10 @@ Route::get('/gacor', function () {
     echo 'gacor';
 });
 
+Route::get('/gasan', function () {
+    return view('index');
+});
+
 Route::get('/contact/{name?}', function($name = ''){
     return view('contact', compact('name'));
 })->name('contact');
