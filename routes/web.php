@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Route::get('/aigo', function () {
@@ -25,8 +25,9 @@ Route::get('/gacor', function () {
     echo 'gacor';
 });
 
-Route::get('/gasan', function () {
-    return view('index');
+Route::get('/login', function () {
+    return view('login');
+    // echo 'login';
 });
 
 Route::get('/contact/{name?}', function($name = ''){
