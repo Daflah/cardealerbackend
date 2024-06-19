@@ -28,3 +28,7 @@ Route::get('/gacor', function () {
 Route::get('/contact/{name?}', function($name = ''){
     return view('contact', compact('name'));
 })->name('contact');
+
+Route::get('/gaga', function () {
+    return view('admin/admin-beranda');
+});
