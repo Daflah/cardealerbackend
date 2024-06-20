@@ -676,6 +676,12 @@
   </section>
   <!-- end of quotes section -->
 
+
+
+    <!-- Teams section -->
+ 
+ <!-- End of Teams section -->
+
   <!-- footer -->
   <footer class="footer py-5" id="footer">
     <div class="footer-icons d-flex flex-wrap justify-content-around">
