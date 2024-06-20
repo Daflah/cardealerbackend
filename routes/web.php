@@ -30,6 +30,10 @@ Route::post('/update-pegawai/{id}', [PegawaiController::class, 'update'])->name(
 
 Route::get('/delete-pegawai/{id}', [PegawaiController::class, 'destroy'])->name('delete-pegawai');
 
+Route::get('/gasan', function () {
+    return view('index');
+});
+
 Route::get('/contact/{name?}', function($name = ''){
     return view('contact', compact('name'));
 })->name('contact');
