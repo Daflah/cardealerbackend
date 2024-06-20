@@ -45,6 +45,7 @@
             <div class="card-body">
                 <table class="table table-bordered">
                     <tr>
+                        <th>Gambar</th>
                         <th>Nama</th>
                         <th>Alamat</th>
                         <th>Tanggal Lahir</th>
@@ -52,6 +53,13 @@
                     </tr>
                     @foreach ($dtPegawai as $item)
                     <tr>
+                        <td>
+                          @if($item->gambar)
+                            <img src="{{ asset('img/'. $item->gambar) }}" alt="Gambar Pegawai" width="100">
+                          @else
+                            Tidak ada gambar
+                          @endif
+                        </td>
                         <td>{{$item->nama}}</td>
                         <td>{{$item->alamat}}</td>
                         <td>{{date('d-m-Y', strtotime($item->tgllhr)) }}</td>

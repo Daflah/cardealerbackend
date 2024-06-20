@@ -28,21 +28,34 @@ class PegawaiController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        $request->validate([
-            'nama' => 'required|string|max:100',
-            'alamat' => 'required|string|max:100',
-            'tgllhr' => 'required|date',
-        ]);
+{
+    // Validasi input
+    $request->validate([
+        'nama' => 'required|string|max:100',
+        'alamat' => 'required|string|max:100',
+        'tgllhr' => 'required|date',
+        'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validasi untuk gambar
+    ]);
 
-        Pegawai::create([
-            'nama' => $request->nama,
-            'alamat' => $request->alamat,
-            'tgllhr' => $request->tgllhr,
-        ]);
-
-        return redirect()->route('data-pegawai')->with('toast_success', 'Data Berhasil Disimpan!');
+    // Proses upload gambar
+    if ($request->hasFile('gambar')) {
+        $file = $request->file('gambar');
+        $namaFile = time() . '_' . $file->getClientOriginalName();
+        $file->move(public_path('img'), $namaFile); // Simpan gambar di folder public/img
+    } else {
+        $namaFile = null; // Atur nilai default jika tidak ada file yang diunggah
     }
+
+    // Simpan data pegawai ke database
+    Pegawai::create([
+        'nama' => $request->nama,
+        'alamat' => $request->alamat,
+        'tgllhr' => $request->tgllhr,
+        'gambar' => $namaFile, // Simpan nama file gambar ke database
+    ]);
+
+    return redirect()->route('data-pegawai')->with('toast_success', 'Data Berhasil Disimpan!');
+}
 
 
     /**
@@ -71,17 +84,35 @@ class PegawaiController extends Controller
             'nama' => 'required|string|max:100',
             'alamat' => 'required|string|max:100',
             'tgllhr' => 'required|date',
+            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validasi untuk gambar
         ]);
-    
+
         $peg = Pegawai::findOrFail($id);
+
+        if ($request->hasFile('gambar')) {
+            $file = $request->file('gambar');
+            $namaFile = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('img'), $namaFile);
+            
+            // Hapus gambar lama jika ada
+            if ($peg->gambar && file_exists(public_path('img/'.$peg->gambar))) {
+                unlink(public_path('img/'.$peg->gambar));
+            }
+
+            // Update gambar dengan yang baru
+            $peg->gambar = $namaFile;
+        }
+
         $peg->update([
             'nama' => $request->nama,
             'alamat' => $request->alamat,
             'tgllhr' => $request->tgllhr,
+            'gambar' => $peg->gambar,
         ]);
-    
+
         return redirect()->route('data-pegawai')->with('toast_success', 'Data Berhasil Diperbarui!');
     }
+
 
     /**
      * Remove the specified resource from storage.

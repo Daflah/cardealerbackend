@@ -46,19 +46,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
             
 
             <div class="card-body">
-            <form action="{{ route('simpan-pegawai') }}" method="post">
+              <form action="{{ route('simpan-pegawai') }}" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="form-group">
-                    <input type="text" id="nama" name="nama" class="form-control" placeholder="Nama Pegawai"> 
+                    <input type="text" id="nama" name="nama" class="form-control" placeholder="Nama Pegawai" required>
                 </div>
                 <div class="form-group">
-                    <textarea name="alamat" id="alamat" class="form-control" placeholder="Alamat Pegawai"></textarea>
+                    <textarea name="alamat" id="alamat" class="form-control" placeholder="Alamat Pegawai" required></textarea>
                 </div>
                 <div class="form-group">
-                    <input type="date" id="tgllhr" name="tgllhr" class="form-control">
+                    <input type="date" id="tgllhr" name="tgllhr" class="form-control" required>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-success">Simpan Data</button>
+                    <input type="file" id="gambar" name="gambar" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Simpan Data</button>
                 </div>
             </form>
             </div>

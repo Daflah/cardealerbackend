@@ -40,26 +40,30 @@
                 <h3>Edit Data Pegawai</h3>
             </div>
             
-
             <div class="card-body">
-            <form action="{{ route('update-pegawai', $peg->id) }}" method="post">
-                {{ csrf_field() }}
-                <div class="form-group">
-                    <input type="text" id="nama" name="nama" class="form-control" placeholder="Nama Pegawai" value="{{ $peg->nama }}"> 
-                </div>
-                <div class="form-group">
-                    <textarea name="alamat" id="alamat" class="form-control" placeholder="Alamat Pegawai">{{ $peg->alamat }}</textarea>
-                </div>
-                <div class="form-group">
-                    <input type="date" id="tgllhr" name="tgllhr" class="form-control" value="{{ $peg->tgllhr }}">
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Ubah Data</button>
-                </div>
-            </form>
+                <form action="{{ route('update-pegawai', $peg->id) }}" method="post" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    <div class="form-group">
+                        <input type="text" id="nama" name="nama" class="form-control" placeholder="Nama Pegawai" value="{{ $peg->nama }}" required> 
+                    </div>
+                    <div class="form-group">
+                        <textarea name="alamat" id="alamat" class="form-control" placeholder="Alamat Pegawai" required>{{ $peg->alamat }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="date" id="tgllhr" name="tgllhr" class="form-control" value="{{ $peg->tgllhr }}" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="file" id="gambar" name="gambar" class="form-control">
+                        @if($peg->gambar)
+                            <img src="{{ url('img/'.$peg->gambar) }}" alt="Gambar Pegawai" width="100">
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Ubah Data</button>
+                    </div>
+                </form>
             </div>
         </div>
-      
     </div>
     <!-- /.content -->
   </div>
