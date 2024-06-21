@@ -37,3 +37,7 @@ Route::get('/contact/{name?}', function($name = ''){
 Route::get('/g', function () {
     return view('index');
 });
+
+Route::get('/login', function () {
+    return view('login');
+});
