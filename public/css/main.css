@@ -43,6 +43,11 @@ body{
 /** navbar **/
 .navbar {
   background: var(--mainWhite);
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000; /* Pastikan navbar di depan konten lainnya */
 }
 
 .navbar-icon {
