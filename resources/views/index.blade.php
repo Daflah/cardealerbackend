@@ -675,45 +675,37 @@
     </div>
   </section>
   <!-- end of quotes section -->
-  <section id="our-team">
-  <div class="wrapperrr">
-    <section class="quotes py-5 my-3" id="quotes">
-      <div class="container">
-        <!-- section title -->
-        <div class="row my-5">
-          <div class="col d-flex flex-wrap text-uppercase justify-content-center">
-            <h1 class="font-weight-bold align-self-center mx-1">OUR</h1>
-            <h1 class="section-title--special mx-1">ADMINS</h1>
+    <section id="our-team">
+    <div class="wrapperrr">
+      <section class="quotes py-5 my-3" id="quotes">
+        <div class="container">
+          <!-- section title -->
+          <div class="row my-5">
+            <div class="col d-flex flex-wrap text-uppercase justify-content-center">
+              <h1 class="font-weight-bold align-self-center mx-1">OUR</h1>
+              <h1 class="section-title--special mx-1">ADMINS</h1>
+            </div>
+          </div>
+
+          <div class="wrapperrr-team">
+            @forelse ($dtPegawai as $item)
+            <div class="team-developer">
+              @if($item->gambar)
+              <img src="{{ asset('img/'. $item->gambar) }}" alt="Gambar Pegawai" class="team-img">
+              @else
+              <p>Tidak ada gambar</p>
+              @endif
+              <h3>{{ $item->nama }}</h3>
+              <p>{{ $item->alamat }}</p>
+            </div>
+            @empty
+            <p>Tidak ada data pegawai.</p>
+            @endforelse
           </div>
         </div>
-        
-        <div class="wrapperrr-team">
-          <div class="team-developer">
-            <img src="{{ asset('img/Daflah1.jpg') }}" alt="">
-            <h3>Daflah Tsany Gusra</h3>
-            <p>535220177</p>
-          </div>
-          
-          <div class="team-developer">
-            <img src="{{ asset('img/Ravel1.jpg') }}" alt="">
-            <h3>Ravelino Radissey</h3>
-            <p>535220181</p>
-          </div>
-          
-          <div class="team-developer">
-            <img src="{{ asset('img/Kenneth1.jpg') }}" alt="">
-            <h3>Kenneth Marlon Tan</h3>
-            <p>535220183</p>
-          </div>
-          
-          <div class="team-developer">
-            <img src="{{ asset('img/Wenly1.jpg') }}" alt="">
-            <h3>Wenly Rusli</h3>
-            <p>535220258</p>
-          </div>
-        </div>
-      </div>
-    </section>
+      </section>
+    </div>
+  </section>
   </div>
 </section>
 

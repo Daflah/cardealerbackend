@@ -30,6 +30,10 @@ Route::post('/update-pegawai/{id}', [PegawaiController::class, 'update'])->name(
 
 Route::get('/delete-pegawai/{id}', [PegawaiController::class, 'destroy'])->name('delete-pegawai');
 
+Route::get('/showOurTeam', [PegawaiController::class, 'showOurTeam'])->name('showOurTeam');
+
+//Kalau beda controller tapi satu / itu bisa apa kaga
+
 Route::get('/gasan', function () {
     return view('index');
 });
@@ -37,7 +41,3 @@ Route::get('/gasan', function () {
 Route::get('/contact/{name?}', function($name = ''){
     return view('contact', compact('name'));
 })->name('contact');
-
-Route::get('/g', function () {
-    return view('index');
-});

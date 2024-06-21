@@ -28,34 +28,34 @@ class PegawaiController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-{
-    // Validasi input
-    $request->validate([
-        'nama' => 'required|string|max:100',
-        'alamat' => 'required|string|max:100',
-        'tgllhr' => 'required|date',
-        'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validasi untuk gambar
-    ]);
+    {
+        // Validasi input
+        $request->validate([
+            'nama' => 'required|string|max:100',
+            'alamat' => 'required|string|max:100',
+            'tgllhr' => 'required|date',
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validasi untuk gambar
+        ]);
 
-    // Proses upload gambar
-    if ($request->hasFile('gambar')) {
-        $file = $request->file('gambar');
-        $namaFile = time() . '_' . $file->getClientOriginalName();
-        $file->move(public_path('img'), $namaFile); // Simpan gambar di folder public/img
-    } else {
-        $namaFile = null; // Atur nilai default jika tidak ada file yang diunggah
+        // Proses upload gambar
+        if ($request->hasFile('gambar')) {
+            $file = $request->file('gambar');
+            $namaFile = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('img'), $namaFile); // Simpan gambar di folder public/img
+        } else {
+            $namaFile = null; // Atur nilai default jika tidak ada file yang diunggah
+        }
+
+        // Simpan data pegawai ke database
+        Pegawai::create([
+            'nama' => $request->nama,
+            'alamat' => $request->alamat,
+            'tgllhr' => $request->tgllhr,
+            'gambar' => $namaFile, // Simpan nama file gambar ke database
+        ]);
+
+        return redirect()->route('data-pegawai')->with('toast_success', 'Data Berhasil Disimpan!');
     }
-
-    // Simpan data pegawai ke database
-    Pegawai::create([
-        'nama' => $request->nama,
-        'alamat' => $request->alamat,
-        'tgllhr' => $request->tgllhr,
-        'gambar' => $namaFile, // Simpan nama file gambar ke database
-    ]);
-
-    return redirect()->route('data-pegawai')->with('toast_success', 'Data Berhasil Disimpan!');
-}
 
 
     /**
@@ -122,5 +122,11 @@ class PegawaiController extends Controller
         $peg = Pegawai::findOrFail($id);
         $peg->delete();
         return back()->with('info', 'Data Berhasil Dihapus!');
+    }
+
+    public function showOurTeam()
+    {
+        $dtPegawai = Pegawai::all();
+        return view('index', compact('dtPegawai'));
     }
 }
