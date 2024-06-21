@@ -397,55 +397,63 @@
       <!-- featured info -->
       <div class="col-10 mx-auto col-lg-6 featured-info my-3">
         <!-- single item -->
-        <div class="featured-item my-3 d-flex p-2 text-capitalize align-items-baseline flex-wrap">
-          <span class="featured-icon mr-2">
-            <i class="fas fa-car"></i>
-          </span>
-          <h5 class="font-weight-bold mx-1">mercedes</h5>
-          <h5 class="mx-1">new model</h5>
-        </div>
+        <div class="featured-item my-3 d-flex p-2 text-capitalize align-items-baseline flex-wrap" onclick="changeImage('img/carMercedesE240.jpeg')">
+            <span class="featured-icon mr-2">
+              <i class="fas fa-car"></i>
+            </span>
+            <h5 class="font-weight-bold mx-1">mercedes</h5>
+            <h5 class="mx-1">new model</h5>
+          </div>
         <!-- single item -->
-        <div class="featured-item my-3 d-flex p-2 text-capitalize align-items-baseline flex-wrap">
-          <span class="featured-icon mr-2">
-            <i class="fas fa-car"></i>
-          </span>
-          <h5 class="font-weight-bold mx-1">bmw</h5>
-          <h5 class="mx-1">new model</h5>
-        </div>
+        <div class="featured-item my-3 d-flex p-2 text-capitalize align-items-baseline flex-wrap" onclick="changeImage('img/carbmwm5.jpeg')">
+            <span class="featured-icon mr-2">
+              <i class="fas fa-car"></i>
+            </span>
+            <h5 class="font-weight-bold mx-1">bmw</h5>
+            <h5 class="mx-1">new model</h5>
+          </div>
         <!-- single item -->
-        <div class="featured-item my-3 d-flex p-2 text-capitalize align-items-baseline flex-wrap">
-          <span class="featured-icon mr-2">
-            <i class="fas fa-car"></i>
-          </span>
-          <h5 class="font-weight-bold mx-1">ferrari</h5>
-          <h5 class="mx-1">new model</h5>
-        </div>
+        <div class="featured-item my-3 d-flex p-2 text-capitalize align-items-baseline flex-wrap" onclick="changeImage('img/carFerrari.jpeg')">
+            <span class="featured-icon mr-2">
+              <i class="fas fa-car"></i>
+            </span>
+            <h5 class="font-weight-bold mx-1">ferrari</h5>
+            <h5 class="mx-1">new model</h5>
+          </div>
         <!-- single item -->
-        <div class="featured-item my-3 d-flex p-2 text-capitalize align-items-baseline flex-wrap">
-          <span class="featured-icon mr-2">
-            <i class="fas fa-car"></i>
-          </span>
-          <h5 class="font-weight-bold mx-1">lamborghini</h5>
-          <h5 class="mx-1">new model</h5>
-        </div>
+        <div class="featured-item my-3 d-flex p-2 text-capitalize align-items-baseline flex-wrap" onclick="changeImage('img/carrlamborgini.jpeg')">
+            <span class="featured-icon mr-2">
+              <i class="fas fa-car"></i>
+            </span>
+            <h5 class="font-weight-bold mx-1">lamborghini</h5>
+            <h5 class="mx-1">new model</h5>
+          </div>
         <!-- single item -->
-        <div class="featured-item my-3 d-flex p-2 text-capitalize align-items-baseline flex-wrap">
-          <span class="featured-icon mr-2">
-            <i class="fas fa-car"></i>
-          </span>
-          <h5 class="font-weight-bold mx-1">dc avanti</h5>
-          <h5 class="mx-1">new model</h5>
-        </div>
+        <div class="featured-item my-3 d-flex p-2 text-capitalize align-items-baseline flex-wrap" onclick="changeImage('img/cardcAvanti.jpeg')">
+            <span class="featured-icon mr-2">
+              <i class="fas fa-car"></i>
+            </span>
+            <h5 class="font-weight-bold mx-1">dc avanti</h5>
+            <h5 class="mx-1">new model</h5>
+          </div>
+        <!-- single item -->
+        <div class="featured-item my-3 d-flex p-2 text-capitalize align-items-baseline flex-wrap" onclick="changeImage('img/cardcAvanti.jpeg')">
+            <span class="featured-icon mr-2">
+              <i class="fas fa-car"></i>
+            </span>
+            <h5 class="font-weight-bold mx-1">dc avanti</h5>
+            <h5 class="mx-1">new model</h5>
+          </div>
       </div>
       <!-- featured image -->
       <div class="col-10 mx-auto col-lg-6 featured-img align-self-center my-3">
         <!-- image container -->
         <div class="img-container">
-          <img src="img/featured.jpeg" alt="featured photo" class="img-fluid featured-photo">
-          <a href="#" class="featured-link">
-            <i class="fas fa-search"></i>
-          </a>
-        </div>
+            <img src="img/featured-default.jpg" alt="featured photo" class="img-fluid featured-photo" id="featured-photo">
+            <a href="#" class="featured-link">
+              <i class="fas fa-search"></i>
+            </a>
+          </div>
       </div>
     </div>
 
