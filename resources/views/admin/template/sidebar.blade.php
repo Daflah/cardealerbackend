@@ -59,8 +59,8 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
-                  Belom tau
+                <a href="{{ route('data-header')}}" class="nav-link">
+                  Header Car
                 </a>
               </li>
             </ul>

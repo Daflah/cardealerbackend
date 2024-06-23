@@ -66,21 +66,33 @@
 
   <!-- header -->
   <header class="header" id="header">
-    <div class="container-fluid">
-      <div class="row height-max align-items-center">
-        <div class="col col-md-9 ml-auto text-right pr-5">
-          <h6 class="title-heading d-inline-block p-2 text-uppercase">the all new</h6>
-          <h2 class="text-uppercase my-2 title">2018 mercedes-benz</h2>
-          <h3 class="text-uppercase">model name</h3>
-          <h6 class="text-capitalize">starts from</h6>
-          <h2>$60,000 
-            <a href="#" class="title-icon d-inline-block mx-2">
-              <i class="fas fa-play"></i>
-            </a>
-          </h2>
-        </div>
+      <div class="container-fluid">
+          <div class="row height-max align-items-center">
+              <div class="col col-md-9 ml-auto text-right pr-5">
+                  @forelse ($dtHeader as $header)
+                      <h6 class="title-heading d-inline-block p-2 text-uppercase">{{ $header->slogan }}</h6>
+                      <h2 class="text-uppercase my-2 title">{{ $header->judulmobil }}</h2>
+                      <h3 class="text-uppercase">{{ $header->model }}</h3>
+                      <h6 class="text-capitalize">starts from</h6>
+                      <h2>Rp.{{ $header->harga }}
+                          <a href="#" class="title-icon d-inline-block mx-2">
+                              <i class="fas fa-play"></i>
+                          </a>
+                      </h2>
+                  @empty
+                      <h6 class="title-heading d-inline-block p-2 text-uppercase">the all new</h6>
+                      <h2 class="text-uppercase my-2 title">2018 mercedes-benz</h2>
+                      <h3 class="text-uppercase">model name</h3>
+                      <h6 class="text-capitalize">starts from</h6>
+                      <h2>$60,000
+                          <a href="#" class="title-icon d-inline-block mx-2">
+                              <i class="fas fa-play"></i>
+                          </a>
+                      </h2>
+                  @endforelse
+              </div>
+          </div>
       </div>
-    </div>
   </header>
   <!-- end of header -->
 
@@ -713,7 +725,7 @@
                                     <p>Tidak ada gambar</p>
                                 @endif
                                 <h3>{{ $item->nama }}</h3>
-                                <p>{{ $item->alamat }}</p>
+                                <p>{{ $item->nim }}</p>
                             </div>
                         @empty
                             <p>Tidak ada data pegawai.</p>

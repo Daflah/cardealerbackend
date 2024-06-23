@@ -4,8 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\IndexController;
-use App\Http\Controllers\UserHomeController;
-
+use App\Http\Controllers\HeaderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,7 +30,6 @@ Route::get('/delete-pegawai/{id}', [PegawaiController::class, 'destroy'])->name(
 // -------------------------------------- Bagian Pegawai --------------------------------------
 
 
-
 // -------------------------------------- Bagian Galeri --------------------------------------
 Route::get('/data-galeri', [GaleriController::class, 'index'])->name('data-galeri');
 Route::get('/create-galeri', [GaleriController::class, 'create'])->name('create-galeri');
@@ -40,9 +38,16 @@ Route::get('/edit-galeri/{id}', [GaleriController::class, 'edit'])->name('edit-g
 Route::post('/update-galeri/{id}', [GaleriController::class, 'update'])->name('update-galeri');
 Route::get('/delete-galeri/{id}', [GaleriController::class, 'destroy'])->name('delete-galeri');
 // -------------------------------------- Bagian Galeri --------------------------------------
-Route::get('/gasan', function () {
-    return view('index');
-});
+
+
+// -------------------------------------- Bagian Header --------------------------------------
+Route::get('/data-header', [HeaderController::class, 'index'])->name('data-header');
+Route::get('/create-header', [HeaderController::class, 'create'])->name('create-header');
+Route::post('/simpan-header', [HeaderController::class, 'store'])->name('simpan-header');
+Route::get('/edit-header/{id}', [HeaderController::class, 'edit'])->name('edit-header');
+Route::post('/update-header/{id}', [HeaderController::class, 'update'])->name('update-header');
+Route::get('/delete-header/{id}', [HeaderController::class, 'destroy'])->name('delete-header');
+// -------------------------------------- Bagian Galeri --------------------------------------
 
 // -------------------------------------- Bagian Coba Gabungin --------------------------------------
 
@@ -66,9 +71,6 @@ Route::get('/index', [IndexController::class, 'index'])->name('index');
 
 // -------------------------------------- Bagian Coba Gabungin --------------------------------------
 
-Route::get('/gasan', function () {
-    return view('index');
-});
 
 Route::get('/login', function () {
     return view('login');

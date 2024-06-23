@@ -16,7 +16,8 @@ class Pegawai extends Model
         'gambar',   
         'nama', 
         'alamat', 
-        'tgllhr'
+        'tgllhr',
+        'nim'
     ];
 
     public $timestamps = true;

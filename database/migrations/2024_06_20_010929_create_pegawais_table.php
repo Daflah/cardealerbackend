@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('gambar', 100);
             $table->string('nama',100);
             $table->string('alamat',100);
+            $table->string('nim',100);
             $table->date('tgllhr');
             $table->timestamps();
         });

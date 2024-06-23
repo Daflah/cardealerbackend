@@ -32,6 +32,7 @@ class PegawaiController extends Controller
         // Validasi input
         $request->validate([
             'nama' => 'required|string|max:100',
+            'nim' => 'required|string|max:100',
             'alamat' => 'required|string|max:100',
             'tgllhr' => 'required|date',
             'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validasi untuk gambar
@@ -49,6 +50,7 @@ class PegawaiController extends Controller
         // Simpan data pegawai ke database
         Pegawai::create([
             'nama' => $request->nama,
+            'nim' => $request->nim,
             'alamat' => $request->alamat,
             'tgllhr' => $request->tgllhr,
             'gambar' => $namaFile, // Simpan nama file gambar ke database
@@ -82,6 +84,7 @@ class PegawaiController extends Controller
     {
         $request->validate([
             'nama' => 'required|string|max:100',
+            'nim' => 'required|string|max:100',
             'alamat' => 'required|string|max:100',
             'tgllhr' => 'required|date',
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validasi untuk gambar
@@ -105,6 +108,7 @@ class PegawaiController extends Controller
 
         $peg->update([
             'nama' => $request->nama,
+            'nim' => $request->nim,
             'alamat' => $request->alamat,
             'tgllhr' => $request->tgllhr,
             'gambar' => $peg->gambar,

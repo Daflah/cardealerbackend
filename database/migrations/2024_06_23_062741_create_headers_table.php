@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('headers', function (Blueprint $table) {
             $table->id();
+            $table->string('gambar', 100);
+            $table->string('slogan',100);
+            $table->string('judulmobil',100);
+            $table->string('model',100);
+            $table->string('harga',100);
             $table->timestamps();
         });
     }
