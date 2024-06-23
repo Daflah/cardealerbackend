@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Pegawai;
+use App\Models\Galeri;
 
-class PegawaiController extends Controller
+class GaleriController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $dtPegawai = Pegawai::orderBy('id', 'asc')->paginate(5);
-        return view('admin.pegawai.data-pegawai', compact('dtPegawai'));
+        $dtGaleri = Galeri::orderBy('id', 'asc')->paginate(5);
+        return view('admin.galeri.data-galeri', compact('dtGaleri'));
     }
 
     /**
@@ -21,7 +21,7 @@ class PegawaiController extends Controller
      */
     public function create()
     {
-        return view('admin.pegawai.create-pegawai');
+        return view('admin.galeri.create-galeri');
     }
 
     /**
@@ -31,10 +31,8 @@ class PegawaiController extends Controller
     {
         // Validasi input
         $request->validate([
-            'nama' => 'required|string|max:100',
-            'alamat' => 'required|string|max:100',
-            'tgllhr' => 'required|date',
             'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validasi untuk gambar
+            'judul' => 'required|string|max:100',
         ]);
 
         // Proses upload gambar
@@ -46,17 +44,14 @@ class PegawaiController extends Controller
             $namaFile = null; // Atur nilai default jika tidak ada file yang diunggah
         }
 
-        // Simpan data pegawai ke database
-        Pegawai::create([
-            'nama' => $request->nama,
-            'alamat' => $request->alamat,
-            'tgllhr' => $request->tgllhr,
-            'gambar' => $namaFile, // Simpan nama file gambar ke database
+        // Simpan data galeri ke database
+        Galeri::create([
+            'gambar' => $namaFile,
+            'judul' => $request->judul,
         ]);
 
-        return redirect()->route('data-pegawai')->with('toast_success', 'Data Berhasil Disimpan!');
+        return redirect()->route('data-galeri')->with('toast_success', 'Data Berhasil Disimpan!');
     }
-
 
     /**
      * Display the specified resource.
@@ -71,8 +66,8 @@ class PegawaiController extends Controller
      */
     public function edit(string $id)
     {
-        $peg = Pegawai::findorfail($id);
-        return view('admin.pegawai.edit-pegawai', compact('peg'));
+        $galeri = Galeri::findorfail($id);
+        return view('admin.galeri.edit-galeri', compact('galeri'));
     }
 
     /**
@@ -81,13 +76,11 @@ class PegawaiController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'nama' => 'required|string|max:100',
-            'alamat' => 'required|string|max:100',
-            'tgllhr' => 'required|date',
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validasi untuk gambar
+            'judul' => 'required|string|max:100',
         ]);
 
-        $peg = Pegawai::findOrFail($id);
+        $galeri = Galeri::findOrFail($id);
 
         if ($request->hasFile('gambar')) {
             $file = $request->file('gambar');
@@ -95,38 +88,41 @@ class PegawaiController extends Controller
             $file->move(public_path('img'), $namaFile);
             
             // Hapus gambar lama jika ada
-            if ($peg->gambar && file_exists(public_path('img/'.$peg->gambar))) {
-                unlink(public_path('img/'.$peg->gambar));
+            if ($galeri->gambar && file_exists(public_path('img/'.$galeri->gambar))) {
+                unlink(public_path('img/'.$galeri->gambar));
             }
 
             // Update gambar dengan yang baru
-            $peg->gambar = $namaFile;
+            $galeri->gambar = $namaFile;
         }
 
-        $peg->update([
-            'nama' => $request->nama,
-            'alamat' => $request->alamat,
-            'tgllhr' => $request->tgllhr,
-            'gambar' => $peg->gambar,
+        $galeri->update([
+            'gambar' => $galeri->gambar,
+            'judul' => $request->judul,
         ]);
 
-        return redirect()->route('data-pegawai')->with('toast_success', 'Data Berhasil Diperbarui!');
+        return redirect()->route('data-galeri')->with('toast_success', 'Data Berhasil Diperbarui!');
     }
-
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        $peg = Pegawai::findOrFail($id);
-        $peg->delete();
+        $galeri = Galeri::findOrFail($id);
+
+        // Hapus gambar jika ada
+        if ($galeri->gambar && file_exists(public_path('img/'.$galeri->gambar))) {
+            unlink(public_path('img/'.$galeri->gambar));
+        }
+
+        $galeri->delete();
         return back()->with('info', 'Data Berhasil Dihapus!');
     }
 
-    public function showOurTeam()
+    public function showGallery()
     {
-        $pegawai = Pegawai::all(); // Sesuaikan dengan query yang diperlukan
-        return $pegawai;
+        $galeri = Galeri::all(); // Sesuaikan dengan query yang diperlukan
+        return $galeri;
     }
 }

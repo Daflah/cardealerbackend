@@ -456,59 +456,76 @@
   <!-- gallery section -->
   <section class="gallery py-5" id="gallery">
     <div class="container">
-        <!-- section title -->
-        <div class="row mb-5">
-          <div class="col d-flex flex-wrap text-uppercase justify-content-center">
-            <h1 class="font-weight-bold align-self-center mx-1">our</h1>
-            <h1 class="section-title--special mx-1">gallery</h1>
+      <!-- section title -->
+      <div class="row mb-5">
+        <div class="col d-flex flex-wrap text-uppercase justify-content-center">
+          <h1 class="font-weight-bold align-self-center mx-1">our</h1>
+          <h1 class="section-title--special mx-1">gallery</h1>
+        </div>
+      </div>
+      <!-- end of section title -->
+
+      <div class="row">
+        <!-- first column -->
+        <div class="col-sm-6">
+          <div class="gallery-item">
+            @if(isset($dtGaleri[0]))
+            <img src="{{ asset('img/'.$dtGaleri[0]->gambar) }}" alt="{{ $dtGaleri[0]->judul }}" class="img-fluid gallery-img">
+            @else
+            <p>No image available</p>
+            @endif
           </div>
         </div>
-        <!-- end of section title -->
-        <div class="row">
-          <!-- first column -->
-          <div class="col-sm-6">
-            <div class="gallery-item">
-                <img src="img/car-american-1.jpeg" alt="car" class="img-fluid gallery-img">
-            </div>
-          </div>
-          <!-- end of first column -->
-          <!-- second column -->
-          <div class="col-sm-6 d-flex flex-column justify-content-between">
-            <div class="row">
-                <!-- single item -->
-                <div class="col-sm-6">
-                  <div class="gallery-item">
-                      <img src="img/car-american-2.jpeg" alt="car" class="img-fluid gallery-img">
-                  </div>
-                </div>
-                <!-- end of single item -->
-                <!-- single item -->
-                <div class="col-sm-6">
-                  <div class="gallery-item">
-                      <img src="img/car-american-3.jpeg" alt="car" class="img-fluid gallery-img">
-                  </div>
-                </div>
-                <!-- end of single item -->
-            </div>
-            <div class="row">
-              <!-- single item -->
-              <div class="col-sm-6">
-                <div class="gallery-item">
-                    <img src="img/car-american-4.jpeg" alt="car" class="img-fluid gallery-img">
-                </div>
+        <!-- end of first column -->
+
+        <!-- second column -->
+        <div class="col-sm-6 d-flex flex-column justify-content-between">
+          <div class="row">
+            <!-- single item -->
+            @if(isset($dtGaleri[1]))
+            <div class="col-sm-6">
+              <div class="gallery-item">
+                <img src="{{ asset('img/'.$dtGaleri[1]->gambar) }}" alt="{{ $dtGaleri[1]->judul }}" class="img-fluid gallery-img">
               </div>
-              <!-- end of single item -->
-              <!-- single item -->
-              <div class="col-sm-6">
-                <div class="gallery-item">
-                    <img src="img/car-american-5.jpeg" alt="car" class="img-fluid gallery-img">
-                </div>
-              </div>
-              <!-- end of single item -->
             </div>
+            <!-- end of single item -->
+            @endif
+
+            <!-- single item -->
+            @if(isset($dtGaleri[2]))
+            <div class="col-sm-6">
+              <div class="gallery-item">
+                <img src="{{ asset('img/'.$dtGaleri[2]->gambar) }}" alt="{{ $dtGaleri[2]->judul }}" class="img-fluid gallery-img">
+              </div>
+            </div>
+            <!-- end of single item -->
+            @endif
           </div>
-          <!-- end of second column -->
+
+          <div class="row">
+            <!-- single item -->
+            @if(isset($dtGaleri[3]))
+            <div class="col-sm-6">
+              <div class="gallery-item">
+                <img src="{{ asset('img/'.$dtGaleri[3]->gambar) }}" alt="{{ $dtGaleri[3]->judul }}" class="img-fluid gallery-img">
+              </div>
+            </div>
+            <!-- end of single item -->
+            @endif
+
+            <!-- single item -->
+            @if(isset($dtGaleri[4]))
+            <div class="col-sm-6">
+              <div class="gallery-item">
+                <img src="{{ asset('img/'.$dtGaleri[4]->gambar) }}" alt="{{ $dtGaleri[4]->judul }}" class="img-fluid gallery-img">
+              </div>
+            </div>
+            <!-- end of single item -->
+            @endif
+          </div>
         </div>
+        <!-- end of second column -->
+      </div>
     </div>
   </section>
   <!-- end of gallery section -->
@@ -674,38 +691,38 @@
       </div>
     </div>
   </section>
-  <!-- end of quotes section -->
+    <!-- end of quotes section -->
     <section id="our-team">
-    <div class="wrapperrr">
-      <section class="quotes py-5 my-3" id="quotes">
-        <div class="container">
-          <!-- section title -->
-          <div class="row my-5">
-            <div class="col d-flex flex-wrap text-uppercase justify-content-center">
-              <h1 class="font-weight-bold align-self-center mx-1">OUR</h1>
-              <h1 class="section-title--special mx-1">ADMINS</h1>
-            </div>
-          </div>
+        <div class="wrapperrr">
+            <section class="quotes py-5 my-3" id="quotes">
+                <div class="container">
+                    <!-- section title -->
+                    <div class="row my-5">
+                        <div class="col d-flex flex-wrap text-uppercase justify-content-center">
+                            <h1 class="font-weight-bold align-self-center mx-1">OUR</h1>
+                            <h1 class="section-title--special mx-1">ADMINS</h1>
+                        </div>
+                    </div>
 
-          <div class="wrapperrr-team">
-            @forelse ($dtPegawai as $item)
-            <div class="team-developer">
-              @if($item->gambar)
-              <img src="{{ asset('img/'. $item->gambar) }}" alt="Gambar Pegawai" class="team-img">
-              @else
-              <p>Tidak ada gambar</p>
-              @endif
-              <h3>{{ $item->nama }}</h3>
-              <p>{{ $item->alamat }}</p>
-            </div>
-            @empty
-            <p>Tidak ada data pegawai.</p>
-            @endforelse
-          </div>
+                    <div class="wrapperrr-team">
+                        @forelse ($dtPegawai as $item)
+                            <div class="team-developer">
+                                @if($item->gambar)
+                                    <img src="{{ asset('img/'. $item->gambar) }}" alt="Gambar Pegawai" class="team-img">
+                                @else
+                                    <p>Tidak ada gambar</p>
+                                @endif
+                                <h3>{{ $item->nama }}</h3>
+                                <p>{{ $item->alamat }}</p>
+                            </div>
+                        @empty
+                            <p>Tidak ada data pegawai.</p>
+                        @endforelse
+                    </div>
+                </div>
+            </section>
         </div>
-      </section>
-    </div>
-  </section>
+    </section>
   </div>
 </section>
 
