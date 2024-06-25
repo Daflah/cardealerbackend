@@ -67,9 +67,9 @@
   <!-- header -->
   <header class="header" id="header">
       <div class="container-fluid">
-          <div class="row height-max align-items-center">
+      @forelse ($dtHeader as $header)
+        <div class="row height-max align-items-center" style="background-image: url('{{ asset('img/'.$header->gambar) }}');">
               <div class="col col-md-9 ml-auto text-right pr-5">
-                  @forelse ($dtHeader as $header)
                       <h6 class="title-heading d-inline-block p-2 text-uppercase">{{ $header->slogan }}</h6>
                       <h2 class="text-uppercase my-2 title">{{ $header->judulmobil }}</h2>
                       <h3 class="text-uppercase">{{ $header->model }}</h3>

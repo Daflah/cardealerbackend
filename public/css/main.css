@@ -83,13 +83,13 @@ body{
 /** header **/
 .header {
   clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0 95%);
-  color: var(--mainWhite);
-  overflow: hidden;
+  color: var(--mainBlue);
+  overflow: visible;
 }
 
 .height-max {
   min-height: calc(100vh - 76px);
-  background: url("../img/headerBcg.jpeg");
+  /* background: url("../img/headerBcg.jpeg"); */
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
@@ -99,6 +99,7 @@ body{
   animation-delay: 5s;
   animation-iteration-count: infinite;
 }
+
 
 @keyframes zoom {
   0% {
