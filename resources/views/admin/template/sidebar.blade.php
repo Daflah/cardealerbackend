@@ -63,6 +63,11 @@
                   Header Car
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{ route('data-jualan')}}" class="nav-link">
+                  Jual Mobil
+                </a>
+              </li>
             </ul>
           </li>
           <!-- <li class="nav-item">

@@ -5,6 +5,7 @@ use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\HeaderController;
+use App\Http\Controllers\JualanController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,7 +48,18 @@ Route::post('/simpan-header', [HeaderController::class, 'store'])->name('simpan-
 Route::get('/edit-header/{id}', [HeaderController::class, 'edit'])->name('edit-header');
 Route::post('/update-header/{id}', [HeaderController::class, 'update'])->name('update-header');
 Route::get('/delete-header/{id}', [HeaderController::class, 'destroy'])->name('delete-header');
-// -------------------------------------- Bagian Galeri --------------------------------------
+// -------------------------------------- Bagian Header --------------------------------------
+
+
+// -------------------------------------- Bagian Jualan --------------------------------------
+Route::get('/data-jualan', [JualanController::class, 'index'])->name('data-jualan');
+Route::get('/create-jualan', [JualanController::class, 'create'])->name('create-jualan');
+Route::post('/simpan-jualan', [JualanController::class, 'store'])->name('simpan-jualan');
+Route::get('/edit-jualan/{id}', [JualanController::class, 'edit'])->name('edit-jualan');
+Route::post('/update-jualan/{id}', [JualanController::class, 'update'])->name('update-jualan');
+Route::get('/delete-jualan/{id}', [JualanController::class, 'destroy'])->name('delete-jualan');
+// -------------------------------------- Bagian Jualan --------------------------------------
+
 
 // -------------------------------------- Bagian Coba Gabungin --------------------------------------
 
