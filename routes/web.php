@@ -98,3 +98,4 @@ Route::get('/index', [IndexController::class, 'index'])->name('index');
 Route::get('/login', function () {
     return view('login');
 });
+
