@@ -20,12 +20,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Data Pegawai</h1>
+            <h1 class="m-0">Data Galeri</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Data Pegawai</li>
+              <li class="breadcrumb-item active">Data Galeri</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -38,7 +38,7 @@
         <div class="card card-info card-outline">
             <div class="card-header">
                 <div class="card-tools">
-                    <a href="{{route('create-pegawai')}}" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
+                    <a href="{{route('create-galeri')}}" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
                 </div>
             </div>
 
@@ -46,35 +46,29 @@
                 <table class="table table-bordered">
                     <tr>
                         <th>Gambar</th>
-                        <th>Nama</th>
-                        <th>NIM</th>
-                        <th>Alamat</th>
-                        <th>Tanggal Lahir</th>
+                        <th>Judul</th>
                         <th>Aksi</th>
                     </tr>
-                    @foreach ($dtPegawai as $item)
+                    @foreach ($dtGaleri as $item)
                     <tr>
                         <td>
                           @if($item->gambar)
-                            <img src="{{ asset('img/'. $item->gambar) }}" alt="Gambar Pegawai" width="100">
+                            <img src="{{ asset('img/'. $item->gambar) }}" alt="Gambar Galeri" width="100">
                           @else
                             Tidak ada gambar
                           @endif
                         </td>
-                        <td>{{$item->nama}}</td>
-                        <td>{{$item->nim}}</td>
-                        <td>{{$item->alamat}}</td>
-                        <td>{{date('d-m-Y', strtotime($item->tgllhr)) }}</td>
+                        <td>{{$item->judul}}</td>
                         <td>
-                          <a href="{{ route('edit-pegawai', $item->id) }}"><i class="fas fa-pen-to-square"></i></a> | 
-                          <a href="{{ route('delete-pegawai', $item->id) }}"><i class="fas fa-trash" style="color:red"></i></a>
+                          <a href="{{ route('edit-galeri', $item->id) }}"><i class="fas fa-pen-to-square"></i></a> | 
+                          <a href="{{ route('delete-galeri', $item->id) }}"><i class="fas fa-trash" style="color:red"></i></a>
                         </td>
                     </tr>
                     @endforeach
                 </table>
             </div>
             <div class="d-flex justify-content-center">
-                    {{ $dtPegawai->links() }}
+                    {{ $dtGaleri->links() }}
             </div>
         </div>
       

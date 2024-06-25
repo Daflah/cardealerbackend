@@ -66,21 +66,33 @@
 
   <!-- header -->
   <header class="header" id="header">
-    <div class="container-fluid">
-      <div class="row height-max align-items-center">
-        <div class="col col-md-9 ml-auto text-right pr-5">
-          <h6 class="title-heading d-inline-block p-2 text-uppercase">the all new</h6>
-          <h2 class="text-uppercase my-2 title">2018 mercedes-benz</h2>
-          <h3 class="text-uppercase">model name</h3>
-          <h6 class="text-capitalize">starts from</h6>
-          <h2>$60,000 
-            <a href="#" class="title-icon d-inline-block mx-2">
-              <i class="fas fa-play"></i>
-            </a>
-          </h2>
-        </div>
+      <div class="container-fluid">
+          <div class="row height-max align-items-center">
+              <div class="col col-md-9 ml-auto text-right pr-5">
+                  @forelse ($dtHeader as $header)
+                      <h6 class="title-heading d-inline-block p-2 text-uppercase">{{ $header->slogan }}</h6>
+                      <h2 class="text-uppercase my-2 title">{{ $header->judulmobil }}</h2>
+                      <h3 class="text-uppercase">{{ $header->model }}</h3>
+                      <h6 class="text-capitalize">starts from</h6>
+                      <h2>Rp.{{ $header->harga }}
+                          <a href="#" class="title-icon d-inline-block mx-2">
+                              <i class="fas fa-play"></i>
+                          </a>
+                      </h2>
+                  @empty
+                      <h6 class="title-heading d-inline-block p-2 text-uppercase">the all new</h6>
+                      <h2 class="text-uppercase my-2 title">2018 mercedes-benz</h2>
+                      <h3 class="text-uppercase">model name</h3>
+                      <h6 class="text-capitalize">starts from</h6>
+                      <h2>$60,000
+                          <a href="#" class="title-icon d-inline-block mx-2">
+                              <i class="fas fa-play"></i>
+                          </a>
+                      </h2>
+                  @endforelse
+              </div>
+          </div>
       </div>
-    </div>
   </header>
   <!-- end of header -->
 
@@ -158,192 +170,74 @@
   <!-- end of skills section -->
 
   <!-- inventory section -->
-  <section id="inventory" class="inventory py-5">
-    <div class="container">
-      <!-- section title -->
-      <div class="row mb-5">
-        <div class="col d-flex flex-wrap text-uppercase justify-content-center">
-          <h1 class="font-weight-bold align-self-center mx-1">our</h1>
-          <h1 class="section-title--special mx-1">inventory</h1>
+    <section id="inventory" class="inventory py-5">
+      <div class="container">
+        <!-- section title -->
+        <div class="row mb-5">
+          <div class="col d-flex flex-wrap text-uppercase justify-content-center">
+            <h1 class="font-weight-bold align-self-center mx-1">our</h1>
+            <h1 class="section-title--special mx-1">inventory</h1>
+          </div>
+        </div>
+        <!-- end of section title -->
+        <div class="row mb-5">
+          <div class="col-10 mx-auto col-md-12 d-flex justify-content-end">
+            <button class="btn btn-outline-secondary text-uppercase mx-1">all</button>
+            <button class="btn btn-outline-secondary text-uppercase mx-1">american</button>
+            <button class="btn btn-outline-secondary text-uppercase mx-1">german</button>
+          </div>
+        </div>
+        <!-- cars -->
+        <div class="row">
+          @foreach ($dtJualan as $jualan)
+          <!-- single car -->
+          <div class="col-10 mx-auto my-3 col-md-6 col-lg-4">
+            <div class="card car-card">
+              <img src="{{ asset('img/'.$jualan->gambar) }}" alt="car" class="card-img-top img-fluid car-img">
+              <!-- card body -->
+              <div class="card-body">
+                <div class="car-info d-flex justify-content-between">
+                  <!-- first flex child -->
+                  <div class="car-text text-uppercase">
+                    <h6 class="font-weight-bold">{{ $jualan->merk }}</h6>
+                    <h6>{{ $jualan->namamobil }}</h6>
+                  </div>
+                  <!-- second flex child -->
+                  <div class="car-value align-self-center py-2 px-3">
+                    <h5>Rp <span class="car-price">{{ number_format($jualan->harga, 0, ',', '.') }}</span>
+                    </h5>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer d-flex text-capitalize justify-content-between">
+                <p><span><i class="fas fa-car"></i></span> {{ $jualan->type }}</p>
+                <p><span><i class="fas fa-cogs"></i></span> {{ $jualan->transmission }}</p>
+                <p><span><i class="fas fa-gas-pump"></i></span> {{ $jualan->bensin }}</p>
+              </div>
+            </div>
+          </div>
+          <!-- end of single car -->
+          @endforeach
+        </div>
+        <!-- end of cars -->
+      </div>
+    </section>
+    <!-- end of inventory section -->
+
+    <!-- other sections (e.g., team section) -->
+    <!-- Example section -->
+    <section id="our-team">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <!-- Your existing team section code here -->
+          </div>
         </div>
       </div>
-      <!-- end of section title -->
-      <div class="row mb-5">
-        <div class="col-10 mx-auto col-md-12 d-flex justify-content-end">
-          <button class="btn btn-outline-secondary text-uppercase mx-1">all</button>
-          <button class="btn btn-outline-secondary text-uppercase mx-1">american</button>
-          <button class="btn btn-outline-secondary text-uppercase mx-1">german</button>
-        </div>
-      </div>
-      <!-- cars -->
-      <div class="row">
-        <!-- single car -->
-        <div class="col-10 mx-auto my-3 col-md-6 col-lg-4">
-          <div class="card car-card">
-            <img src="img/car-german-1.jpeg" alt="car" class="card-img-top img-fluid car-img">
-            <!-- card body -->
-            <div class="card-body">
-              <div class="car-info d-flex justify-content-between">
-                <!-- first flex child -->
-                <div class="car-text text-uppercase">
-                  <h6 class="font-weight-bold">car maker</h6>
-                  <h6>car model</h6>
-                </div>
-                <!-- second flex child -->
-                <div class="car-value align-self-center py-2 px-3">
-                  <h5>$ <span class="car-price">10,000</span>
-                  </h5>
-                </div>
-              </div>
-            </div>
-            <div class="card-footer d-flex text-capitalize justify-content-between">
-              <p><span><i class="fas fa-car"></i></span>  sedan</p>
-              <p><span><i class="fas fa-cogs"></i></span>  transmission</p>
-              <p><span><i class="fas fa-gas-pump"></i></span>  50</p>
-            </div>
-          </div>
-        </div>
-        <!-- end of single car -->
-        <!-- single car -->
-        <div class="col-10 mx-auto my-3 col-md-6 col-lg-4">
-          <div class="card car-card">
-            <img src="img/car-american-1.jpeg" alt="car" class="card-img-top img-fluid car-img">
-            <!-- card body -->
-            <div class="card-body">
-              <div class="car-info d-flex justify-content-between">
-                <!-- first flex child -->
-                <div class="car-text text-uppercase">
-                  <h6 class="font-weight-bold">car maker</h6>
-                  <h6>car model</h6>
-                </div>
-                <!-- second flex child -->
-                <div class="car-value align-self-center py-2 px-3">
-                  <h5>$ <span class="car-price">10,000</span>
-                  </h5>
-                </div>
-              </div>
-            </div>
-            <div class="card-footer d-flex text-capitalize justify-content-between">
-              <p><span><i class="fas fa-car"></i></span>  sedan</p>
-              <p><span><i class="fas fa-cogs"></i></span>  transmission</p>
-              <p><span><i class="fas fa-gas-pump"></i></span>  50</p>
-            </div>
-          </div>
-        </div>
-        <!-- end of single car -->
-        <!-- single car -->
-        <div class="col-10 mx-auto my-3 col-md-6 col-lg-4">
-          <div class="card car-card">
-            <img src="img/car-german-2.jpeg" alt="car" class="card-img-top img-fluid car-img">
-            <!-- card body -->
-            <div class="card-body">
-              <div class="car-info d-flex justify-content-between">
-                <!-- first flex child -->
-                <div class="car-text text-uppercase">
-                  <h6 class="font-weight-bold">car maker</h6>
-                  <h6>car model</h6>
-                </div>
-                <!-- second flex child -->
-                <div class="car-value align-self-center py-2 px-3">
-                  <h5>$ <span class="car-price">10,000</span>
-                  </h5>
-                </div>
-              </div>
-            </div>
-            <div class="card-footer d-flex text-capitalize justify-content-between">
-              <p><span><i class="fas fa-car"></i></span>  sedan</p>
-              <p><span><i class="fas fa-cogs"></i></span>  transmission</p>
-              <p><span><i class="fas fa-gas-pump"></i></span>  50</p>
-            </div>
-          </div>
-        </div>
-        <!-- end of single car -->
-        <!-- single car -->
-        <div class="col-10 mx-auto my-3 col-md-6 col-lg-4">
-          <div class="card car-card">
-            <img src="img/car-american-2.jpeg" alt="car" class="card-img-top img-fluid car-img">
-            <!-- card body -->
-            <div class="card-body">
-              <div class="car-info d-flex justify-content-between">
-                <!-- first flex child -->
-                <div class="car-text text-uppercase">
-                  <h6 class="font-weight-bold">car maker</h6>
-                  <h6>car model</h6>
-                </div>
-                <!-- second flex child -->
-                <div class="car-value align-self-center py-2 px-3">
-                  <h5>$ <span class="car-price">10,000</span>
-                  </h5>
-                </div>
-              </div>
-            </div>
-            <div class="card-footer d-flex text-capitalize justify-content-between">
-              <p><span><i class="fas fa-car"></i></span>  sedan</p>
-              <p><span><i class="fas fa-cogs"></i></span>  transmission</p>
-              <p><span><i class="fas fa-gas-pump"></i></span>  50</p>
-            </div>
-          </div>
-        </div>
-        <!-- end of single car -->
-        <!-- single car -->
-        <div class="col-10 mx-auto my-3 col-md-6 col-lg-4">
-          <div class="card car-card">
-            <img src="img/car-german-3.jpeg" alt="car" class="card-img-top img-fluid car-img">
-            <!-- card body -->
-            <div class="card-body">
-              <div class="car-info d-flex justify-content-between">
-                <!-- first flex child -->
-                <div class="car-text text-uppercase">
-                  <h6 class="font-weight-bold">car maker</h6>
-                  <h6>car model</h6>
-                </div>
-                <!-- second flex child -->
-                <div class="car-value align-self-center py-2 px-3">
-                  <h5>$ <span class="car-price">10,000</span>
-                  </h5>
-                </div>
-              </div>
-            </div>
-            <div class="card-footer d-flex text-capitalize justify-content-between">
-              <p><span><i class="fas fa-car"></i></span>  sedan</p>
-              <p><span><i class="fas fa-cogs"></i></span>  transmission</p>
-              <p><span><i class="fas fa-gas-pump"></i></span>  50</p>
-            </div>
-          </div>
-        </div>
-        <!-- end of single car -->
-        <!-- single car -->
-        <div class="col-10 mx-auto my-3 col-md-6 col-lg-4">
-          <div class="card car-card">
-            <img src="img/car-american-3.jpeg" alt="car" class="card-img-top img-fluid car-img">
-            <!-- card body -->
-            <div class="card-body">
-              <div class="car-info d-flex justify-content-between">
-                <!-- first flex child -->
-                <div class="car-text text-uppercase">
-                  <h6 class="font-weight-bold">car maker</h6>
-                  <h6>car model</h6>
-                </div>
-                <!-- second flex child -->
-                <div class="car-value align-self-center py-2 px-3">
-                  <h5>$ <span class="car-price">10,000</span>
-                  </h5>
-                </div>
-              </div>
-            </div>
-            <div class="card-footer d-flex text-capitalize justify-content-between">
-              <p><span><i class="fas fa-car"></i></span>  sedan</p>
-              <p><span><i class="fas fa-cogs"></i></span>  transmission</p>
-              <p><span><i class="fas fa-gas-pump"></i></span>  50</p>
-            </div>
-          </div>
-        </div>
-        <!-- end of single car -->
-      </div>
-      <!-- end of cars -->
-    </div>
-  </section>
-  <!-- end of inventory section -->
+    </section>
+    <!-- End of other sections -->
+
+   
 
   <!-- question section -->
   <section id="question" class="question py-5">
@@ -464,59 +358,76 @@
   <!-- gallery section -->
   <section class="gallery py-5" id="gallery">
     <div class="container">
-        <!-- section title -->
-        <div class="row mb-5">
-          <div class="col d-flex flex-wrap text-uppercase justify-content-center">
-            <h1 class="font-weight-bold align-self-center mx-1">our</h1>
-            <h1 class="section-title--special mx-1">gallery</h1>
+      <!-- section title -->
+      <div class="row mb-5">
+        <div class="col d-flex flex-wrap text-uppercase justify-content-center">
+          <h1 class="font-weight-bold align-self-center mx-1">our</h1>
+          <h1 class="section-title--special mx-1">gallery</h1>
+        </div>
+      </div>
+      <!-- end of section title -->
+
+      <div class="row">
+        <!-- first column -->
+        <div class="col-sm-6">
+          <div class="gallery-item">
+            @if(isset($dtGaleri[0]))
+            <img src="{{ asset('img/'.$dtGaleri[0]->gambar) }}" alt="{{ $dtGaleri[0]->judul }}" class="img-fluid gallery-img">
+            @else
+            <p>No image available</p>
+            @endif
           </div>
         </div>
-        <!-- end of section title -->
-        <div class="row">
-          <!-- first column -->
-          <div class="col-sm-6">
-            <div class="gallery-item">
-                <img src="img/car-american-1.jpeg" alt="car" class="img-fluid gallery-img">
-            </div>
-          </div>
-          <!-- end of first column -->
-          <!-- second column -->
-          <div class="col-sm-6 d-flex flex-column justify-content-between">
-            <div class="row">
-                <!-- single item -->
-                <div class="col-sm-6">
-                  <div class="gallery-item">
-                      <img src="img/car-american-2.jpeg" alt="car" class="img-fluid gallery-img">
-                  </div>
-                </div>
-                <!-- end of single item -->
-                <!-- single item -->
-                <div class="col-sm-6">
-                  <div class="gallery-item">
-                      <img src="img/car-american-3.jpeg" alt="car" class="img-fluid gallery-img">
-                  </div>
-                </div>
-                <!-- end of single item -->
-            </div>
-            <div class="row">
-              <!-- single item -->
-              <div class="col-sm-6">
-                <div class="gallery-item">
-                    <img src="img/car-american-4.jpeg" alt="car" class="img-fluid gallery-img">
-                </div>
+        <!-- end of first column -->
+
+        <!-- second column -->
+        <div class="col-sm-6 d-flex flex-column justify-content-between">
+          <div class="row">
+            <!-- single item -->
+            @if(isset($dtGaleri[1]))
+            <div class="col-sm-6">
+              <div class="gallery-item">
+                <img src="{{ asset('img/'.$dtGaleri[1]->gambar) }}" alt="{{ $dtGaleri[1]->judul }}" class="img-fluid gallery-img">
               </div>
-              <!-- end of single item -->
-              <!-- single item -->
-              <div class="col-sm-6">
-                <div class="gallery-item">
-                    <img src="img/car-american-5.jpeg" alt="car" class="img-fluid gallery-img">
-                </div>
-              </div>
-              <!-- end of single item -->
             </div>
+            <!-- end of single item -->
+            @endif
+
+            <!-- single item -->
+            @if(isset($dtGaleri[2]))
+            <div class="col-sm-6">
+              <div class="gallery-item">
+                <img src="{{ asset('img/'.$dtGaleri[2]->gambar) }}" alt="{{ $dtGaleri[2]->judul }}" class="img-fluid gallery-img">
+              </div>
+            </div>
+            <!-- end of single item -->
+            @endif
           </div>
-          <!-- end of second column -->
+
+          <div class="row">
+            <!-- single item -->
+            @if(isset($dtGaleri[3]))
+            <div class="col-sm-6">
+              <div class="gallery-item">
+                <img src="{{ asset('img/'.$dtGaleri[3]->gambar) }}" alt="{{ $dtGaleri[3]->judul }}" class="img-fluid gallery-img">
+              </div>
+            </div>
+            <!-- end of single item -->
+            @endif
+
+            <!-- single item -->
+            @if(isset($dtGaleri[4]))
+            <div class="col-sm-6">
+              <div class="gallery-item">
+                <img src="{{ asset('img/'.$dtGaleri[4]->gambar) }}" alt="{{ $dtGaleri[4]->judul }}" class="img-fluid gallery-img">
+              </div>
+            </div>
+            <!-- end of single item -->
+            @endif
+          </div>
         </div>
+        <!-- end of second column -->
+      </div>
     </div>
   </section>
   <!-- end of gallery section -->
@@ -682,7 +593,48 @@
       </div>
     </div>
   </section>
-  <!-- end of quotes section -->
+    <!-- end of quotes section -->
+    <section id="our-team">
+        <div class="wrapperrr">
+            <section class="quotes py-5 my-3" id="quotes">
+                <div class="container">
+                    <!-- section title -->
+                    <div class="row my-5">
+                        <div class="col d-flex flex-wrap text-uppercase justify-content-center">
+                            <h1 class="font-weight-bold align-self-center mx-1">OUR</h1>
+                            <h1 class="section-title--special mx-1">ADMINS</h1>
+                        </div>
+                    </div>
+
+                    <div class="wrapperrr-team">
+                        @forelse ($dtPegawai as $item)
+                            <div class="team-developer">
+                                @if($item->gambar)
+                                    <img src="{{ asset('img/'. $item->gambar) }}" alt="Gambar Pegawai" class="team-img">
+                                @else
+                                    <p>Tidak ada gambar</p>
+                                @endif
+                                <h3>{{ $item->nama }}</h3>
+                                <p>{{ $item->nim }}</p>
+                            </div>
+                        @empty
+                            <p>Tidak ada data pegawai.</p>
+                        @endforelse
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+  </div>
+</section>
+
+
+ 
+
+
+    <!-- Teams section -->
+ 
+ <!-- End of Teams section -->
 
   <!-- footer -->
   <footer class="footer py-5" id="footer">

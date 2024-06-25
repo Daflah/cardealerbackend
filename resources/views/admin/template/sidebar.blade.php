@@ -54,13 +54,18 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
-                  Belom tau
+                <a href="{{ route('data-galeri')}}" class="nav-link">
+                  Galeri showroom
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
-                  Belom tau
+                <a href="{{ route('data-header')}}" class="nav-link">
+                  Header Car
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('data-jualan')}}" class="nav-link">
+                  Jual Mobil
                 </a>
               </li>
             </ul>

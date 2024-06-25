@@ -5,20 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pegawai extends Model
+class Header extends Model
 {
     use HasFactory;
 
-    protected $table = "pegawais";
+    protected $table = "headers";
     protected $primaryKey = "id";
     protected $fillable = [
-        'id',
-        'gambar',   
-        'nama', 
-        'alamat', 
-        'tgllhr',
-        'nim'
+        'gambar',
+        'slogan',
+        'judulmobil',
+        'model',
+        'harga',
     ];
-
-    public $timestamps = true;
 }
+

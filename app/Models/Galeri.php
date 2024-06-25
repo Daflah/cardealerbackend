@@ -5,20 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pegawai extends Model
+class Galeri extends Model
 {
     use HasFactory;
 
-    protected $table = "pegawais";
+    protected $table = "galeris";
     protected $primaryKey = "id";
     protected $fillable = [
-        'id',
         'gambar',   
-        'nama', 
-        'alamat', 
-        'tgllhr',
-        'nim'
+        'judul',
     ];
-
-    public $timestamps = true;
 }

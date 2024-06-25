@@ -11,22 +11,23 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pegawais', function (Blueprint $table) {
+        Schema::create('jualans', function (Blueprint $table) {
             $table->id();
-            $table->string('gambar', 100);
-            $table->string('nama',100);
-            $table->string('alamat',100);
-            $table->string('nim',100);
-            $table->date('tgllhr');
+            $table->string('gambar');
+            $table->string('merk');
+            $table->string('namamobil');
+            $table->string('type');
+            $table->string('transmission');
+            $table->string('bensin');
+            $table->decimal('harga', 15, 2); // Menambahkan kolom harga
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('pegawais');
+        Schema::dropIfExists('jualans');
     }
 };
