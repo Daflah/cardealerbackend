@@ -68,6 +68,11 @@
                   Jual Mobil
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{ route('data-komentar')}}" class="nav-link">
+                  Comment User
+                </a>
+              </li>
             </ul>
           </li>
           <!-- <li class="nav-item">

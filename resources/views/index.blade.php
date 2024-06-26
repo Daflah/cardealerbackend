@@ -508,84 +508,57 @@
   <!-- end of services section -->
 
   <!-- quotes section -->
-  <section class="quotes py-5 my-3" id="quotes">
-    <div class="container">
-      <!-- section title -->
-      <div class="row my-5">
-        <div class="col d-flex flex-wrap text-uppercase justify-content-center">
-          <h1 class="font-weight-bold align-self-center mx-1">what they</h1>
-          <h1 class="section-title--special mx-1">say</h1>
-        </div>
-      </div>
-      <!-- end of section title -->
-      <div class="row">
-        <!-- single card -->
-        <div class="col-10 mx-auto my-5 col-md-6 col-lg-4">
-          <div class="card">
-            <img src="img/car-american-1.jpeg" alt="car" class="img-fluid card-img-top">
-            <!-- card body -->
-            <div class="card-body text-center customer-card-body">
-              <img src="img/customer-1.jpg" alt="customer" class="rounded-circle customer-img">
-              <div class="card-title">
-                <h5 class="customer-name text-capitalize">customer name</h5>
+  <div class="content">
+        <!-- quotes section -->
+        <section class="quotes py-5 my-3" id="quotes">
+          <div class="container">
+            <!-- section title -->
+            <div class="row my-5">
+              <div class="col d-flex flex-wrap text-uppercase justify-content-center">
+                <h1 class="font-weight-bold align-self-center mx-1">what they</h1>
+                <h1 class="section-title--special mx-1">say</h1>
               </div>
-              <h6 class="customer-job text-capitalize">customer job</h6>
-              <p class="text-left customer-quote mx-auto">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum nemo, beatae nostrum ducimus rerum quod.
-              </p>
-              <span class="customer-icon">
-                <i class="fas fa-quote-left"></i>
-              </span>
+            </div>
+            <!-- end of section title -->
+
+            <div class="row">
+              <!-- single card -->
+              @forelse ($dtKomentar as $komentar)
+                <div class="col-10 mx-auto my-5 col-md-6 col-lg-4">
+                  <div class="card">
+                    <img src="{{ $komentar->gambarmobil ? asset('img/' . $komentar->gambarmobil) : 'img/default-car.jpg' }}" alt="car" class="img-fluid card-img-top">
+                    <!-- card body -->
+                    <div class="card-body text-center customer-card-body">
+                      <img src="{{ $komentar->gambarprofile ? asset('img/' . $komentar->gambarprofile) : 'img/default-profile.jpg' }}" alt="customer" class="rounded-circle customer-img">
+                      <div class="card-title">
+                        <h5 class="customer-name text-capitalize">{{ $komentar->nama }}</h5>
+                      </div>
+                      <h6 class="customer-job text-capitalize">{{ $komentar->job }}</h6>
+                      <p class="text-left customer-quote mx-auto">
+                        {{ $komentar->komentar }}
+                      </p>
+                      <span class="customer-icon">
+                        <i class="fas fa-quote-left"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              @empty
+                <p class="col-12 text-center">Tidak ada data komentar.</p>
+              @endforelse
+              <!-- end of single card -->
             </div>
           </div>
-        </div>
-        <!-- end of single card -->
-        <!-- single card -->
-        <div class="col-10 mx-auto my-5 col-md-6 col-lg-4">
-          <div class="card">
-            <img src="img/car-american-2.jpeg" alt="car" class="img-fluid card-img-top">
-            <!-- card body -->
-            <div class="card-body text-center customer-card-body">
-              <img src="img/customer-2.jpg" alt="customer" class="rounded-circle customer-img">
-              <div class="card-title">
-                <h5 class="customer-name text-capitalize">customer name</h5>
-              </div>
-              <h6 class="customer-job text-capitalize">customer job</h6>
-              <p class="text-left customer-quote mx-auto">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum nemo, beatae nostrum ducimus rerum quod.
-              </p>
-              <span class="customer-icon">
-                <i class="fas fa-quote-left"></i>
-              </span>
-            </div>
-          </div>
-        </div>
-        <!-- end of single card -->
-        <!-- single card -->
-        <div class="col-10 mx-auto my-5 col-md-6 col-lg-4">
-          <div class="card">
-            <img src="img/car-american-3.jpeg" alt="car" class="img-fluid card-img-top">
-            <!-- card body -->
-            <div class="card-body text-center customer-card-body">
-              <img src="img/customer-3.jpg" alt="customer" class="rounded-circle customer-img">
-              <div class="card-title">
-                <h5 class="customer-name text-capitalize">customer name</h5>
-              </div>
-              <h6 class="customer-job text-capitalize">customer job</h6>
-              <p class="text-left customer-quote mx-auto">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum nemo, beatae nostrum ducimus rerum quod.
-              </p>
-              <span class="customer-icon">
-                <i class="fas fa-quote-left"></i>
-              </span>
-            </div>
-          </div>
-        </div>
-        <!-- end of single card -->
-      </div>
-    </div>
-  </section>
-    <!-- end of quotes section -->
+        </section>
+        <!-- end of quotes section -->
+
+        <!-- Button section -->
+        <section class="py-5 my-3 text-center">
+          <a href="{{ route('create-komentar')}}" class="btn btn-primary btn-lg">Buat komenmu sendiri</a>
+        </section>
+        <!-- End of Button section -->
+
+
     <section id="our-team">
         <div class="wrapperrr">
             <section class="quotes py-5 my-3" id="quotes">

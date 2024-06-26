@@ -6,6 +6,7 @@ use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\HeaderController;
 use App\Http\Controllers\JualanController;
+use App\Http\Controllers\KomentarController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -58,6 +59,16 @@ Route::post('/simpan-jualan', [JualanController::class, 'store'])->name('simpan-
 Route::get('/edit-jualan/{id}', [JualanController::class, 'edit'])->name('edit-jualan');
 Route::post('/update-jualan/{id}', [JualanController::class, 'update'])->name('update-jualan');
 Route::get('/delete-jualan/{id}', [JualanController::class, 'destroy'])->name('delete-jualan');
+// -------------------------------------- Bagian Jualan --------------------------------------
+
+
+// -------------------------------------- Bagian Jualan --------------------------------------
+Route::get('/data-komentar', [KomentarController::class, 'index'])->name('data-komentar');
+Route::get('/create-komentar', [KomentarController::class, 'create'])->name('create-komentar');
+Route::post('/simpan-komentar', [KomentarController::class, 'store'])->name('simpan-komentar');
+Route::get('/edit-komentar/{id}', [KomentarController::class, 'edit'])->name('edit-komentar');
+Route::post('/update-komentar/{id}', [KomentarController::class, 'update'])->name('update-komentar');
+Route::get('/delete-komentar/{id}', [KomentarController::class, 'destroy'])->name('delete-komentar');
 // -------------------------------------- Bagian Jualan --------------------------------------
 
 
