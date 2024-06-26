@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\HeaderController;
@@ -26,5 +30,19 @@ class IndexController extends Controller
 
         return view('index', compact('dtPegawai', 'dtGaleri', 'dtHeader', 'dtJualan', 'dtKomentar'));
     }
-}
 
+    public function home()
+    {
+        if (Auth::check()) {
+            $usertype = Auth::user()->usertype;
+
+            if ($usertype == 'user') {
+                return redirect()->route('index');
+            } elseif ($usertype == 'admin') {
+                return redirect()->route('admin-beranda');
+            }
+        } else {
+            return redirect()->route('login');
+        }
+    }
+}

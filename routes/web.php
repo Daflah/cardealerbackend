@@ -1,12 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\HeaderController;
 use App\Http\Controllers\JualanController;
 use App\Http\Controllers\KomentarController;
+use App\Http\Controllers\LoginController;
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,10 +22,6 @@ use App\Http\Controllers\KomentarController;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.admin-beranda'); // Sesuaikan nama view dengan nama file blade yang benar
-})->name('admin-beranda');
-
 // -------------------------------------- Bagian Pegawai --------------------------------------
 Route::get('/data-pegawai', [PegawaiController::class, 'index'])->name('data-pegawai');
 Route::get('/create-pegawai', [PegawaiController::class, 'create'])->name('create-pegawai');
@@ -30,6 +30,7 @@ Route::get('/edit-pegawai/{id}', [PegawaiController::class, 'edit'])->name('edit
 Route::post('/update-pegawai/{id}', [PegawaiController::class, 'update'])->name('update-pegawai');
 Route::get('/delete-pegawai/{id}', [PegawaiController::class, 'destroy'])->name('delete-pegawai');
 // -------------------------------------- Bagian Pegawai --------------------------------------
+
 
 
 // -------------------------------------- Bagian Galeri --------------------------------------
@@ -42,6 +43,7 @@ Route::get('/delete-galeri/{id}', [GaleriController::class, 'destroy'])->name('d
 // -------------------------------------- Bagian Galeri --------------------------------------
 
 
+
 // -------------------------------------- Bagian Header --------------------------------------
 Route::get('/data-header', [HeaderController::class, 'index'])->name('data-header');
 Route::get('/create-header', [HeaderController::class, 'create'])->name('create-header');
@@ -50,6 +52,7 @@ Route::get('/edit-header/{id}', [HeaderController::class, 'edit'])->name('edit-h
 Route::post('/update-header/{id}', [HeaderController::class, 'update'])->name('update-header');
 Route::get('/delete-header/{id}', [HeaderController::class, 'destroy'])->name('delete-header');
 // -------------------------------------- Bagian Header --------------------------------------
+
 
 
 // -------------------------------------- Bagian Jualan --------------------------------------
@@ -62,40 +65,84 @@ Route::get('/delete-jualan/{id}', [JualanController::class, 'destroy'])->name('d
 // -------------------------------------- Bagian Jualan --------------------------------------
 
 
-// -------------------------------------- Bagian Jualan --------------------------------------
+
+// -------------------------------------- Bagian Komentar --------------------------------------
 Route::get('/data-komentar', [KomentarController::class, 'index'])->name('data-komentar');
 Route::get('/create-komentar', [KomentarController::class, 'create'])->name('create-komentar');
 Route::post('/simpan-komentar', [KomentarController::class, 'store'])->name('simpan-komentar');
 Route::get('/edit-komentar/{id}', [KomentarController::class, 'edit'])->name('edit-komentar');
 Route::post('/update-komentar/{id}', [KomentarController::class, 'update'])->name('update-komentar');
 Route::get('/delete-komentar/{id}', [KomentarController::class, 'destroy'])->name('delete-komentar');
-// -------------------------------------- Bagian Jualan --------------------------------------
+// -------------------------------------- Bagian Komentar --------------------------------------
 
 
-// -------------------------------------- Bagian Coba Gabungin --------------------------------------
 
-// Route::get('/index', [PegawaiController::class, 'showOurTeam' && GaleriController::class, 'showGallery' ])->name('index');
-
+// -------------------------------------- Bagian Index Route --------------------------------------
 Route::get('/index', [IndexController::class, 'index'])->name('index');
+// -------------------------------------- Bagian Index Route --------------------------------------
 
 
-// Route::get('/index', function () {
-//     $pegawaiController = app()->make('App\Http\Controllers\PegawaiController');
-//     $galeriController = app()->make('App\Http\Controllers\GaleriController');
-    
-//     return $pegawaiController->showOurTeam() . $galeriController->showGallery();
-// })->name('index');
+
+// -------------------------------------- Bagian Authentication Routes --------------------------------------
+Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('login', [LoginController::class, 'login']);
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+// -------------------------------------- Bagian Authentication Routes --------------------------------------
 
 
-// Route::prefix('userHome')->group(function () {
-//     Route::get('/showOurTeam', [UserHomeController::class, 'showOurTeam'])->name('userHome.showOurTeam');
-//     Route::get('/showGallery', [UserHomeController::class, 'showGallery'])->name('userHome.showGallery');
-// });
 
-// -------------------------------------- Bagian Coba Gabungin --------------------------------------
+// -------------------------------------- Bagian Admin Beranda --------------------------------------
+Route::get('/admin-beranda', function () {
+    return view('admin.admin-beranda'); // Sesuaikan nama view dengan nama file blade yang benar
+})->name('admin-beranda');
+// -------------------------------------- Bagian Admin Beranda --------------------------------------
 
 
-Route::get('/login', function () {
-    return view('login');
+
+// -------------------------------------- Bagian Home Route --------------------------------------
+Route::get('/home', function () {
+    if (Auth::check()) {
+        $usertype = Auth::user()->usertype;
+
+        if ($usertype == 'admin') {
+            return redirect('/admin-beranda');
+        } else if ($usertype == 'user') {
+            return redirect('/index');
+        }
+    }
+
+    // Jika tidak login, bisa redirect ke halaman login atau ke halaman lainnya
+    return redirect('/login');
+})->name('home');
+// -------------------------------------- Bagian Home Route --------------------------------------
+
+
+
+// -------------------------------------- Bagian Welcome Route --------------------------------------
+Route::get('/', function () {
+    return view('welcome');
 });
+// -------------------------------------- Bagian Welcome Route --------------------------------------
 
+
+
+// -------------------------------------- Bagian Dashboard Route --------------------------------------
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+// -------------------------------------- Bagian Dashboard Route --------------------------------------
+
+
+
+// -------------------------------------- Bagian Profile Routes --------------------------------------
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+// -------------------------------------- Bagian Profile Routes --------------------------------------
+
+
+
+// Auth Routes
+require __DIR__.'/auth.php';
