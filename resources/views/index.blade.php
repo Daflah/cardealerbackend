@@ -23,46 +23,67 @@
   <!-- end of preloader -->
 
   <!-- nav element -->
-  <nav class="navbar px-3 navbar-expand-lg" id="navbar">
-    <a href="#" class="navbar-brand">
-      <img src="img/gearLogo.png" alt="company logo" class="img-fluid">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNav">
-      <span class="navbar-icon">
-        <i class="fas fa-bars"></i>
-      </span>
-    </button>
-    <!-- nav links-->
-    <div class="collapse navbar-collapse" id="myNav">
-      <ul class="navbar-nav mx-auto">
-        <li class="nav-item active">
-          <a href="#navbar" class="nav-link">home</a>
-        </li>
-        <li class="nav-item">
-          <a href="#skills" class="nav-link">skills</a>
-        </li>
-        <li class="nav-item">
-          <a href="#inventory" class="nav-link">inventory</a>
-        </li>
-        <li class="nav-item">
-          <a href="#featured" class="nav-link">featured</a>
-        </li>
-      </ul>
-    </div>
-    <!-- social icons -->
-    <div class="nav-icons d-none d-lg-block">
-      <a href="#" class="nav-icon mr-2">
-        <i class="fab fa-facebook"></i>
+  <nav x-data="{ open: false }" class="navbar navbar-expand-lg bg-white border-b border-gray-100 px-3" id="navbar">
+      <a href="#" class="navbar-brand">
+          <img src="img/gearLogo.png" alt="company logo" class="img-fluid">
       </a>
-      <a href="#" class="nav-icon mr-2">
-        <i class="fab fa-twitter"></i>
-      </a>
-      <a href="#" class="nav-icon mr-2">
-        <i class="fab fa-instagram"></i>
-      </a>
-    </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNav">
+          <span class="navbar-icon">
+              <i class="fas fa-bars"></i>
+          </span>
+      </button>
+      <!-- nav links-->
+      <div class="collapse navbar-collapse" id="myNav">
+          <ul class="navbar-nav mx-auto">
+              <li class="nav-item active">
+                  <a href="#navbar" class="nav-link">home</a>
+              </li>
+              <li class="nav-item">
+                  <a href="#skills" class="nav-link">skills</a>
+              </li>
+              <li class="nav-item">
+                  <a href="#inventory" class="nav-link">inventory</a>
+              </li>
+              <li class="nav-item">
+                  <a href="#featured" class="nav-link">featured</a>
+              </li>
+              <!-- Dropdown for User -->
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">
+                      {{ Auth::user()->name }}
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="{{ route('profile.edit') }}">
+                          {{ __('Profile') }}
+                      </a>
+                      <form method="POST" action="{{ route('logout') }}">
+                          @csrf
+                          <a class="dropdown-item" href="{{ route('logout') }}"
+                              onclick="event.preventDefault(); this.closest('form').submit();">
+                              {{ __('Log Out') }}
+                          </a>
+                      </form>
+                  </div>
+              </li>
+          </ul>
+      </div>
+      <!-- social icons -->
+      <div class="nav-icons d-none d-lg-block">
+          <a href="#" class="nav-icon mr-2">
+              <i class="fab fa-facebook"></i>
+          </a>
+          <a href="#" class="nav-icon mr-2">
+              <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="nav-icon mr-2">
+              <i class="fab fa-instagram"></i>
+          </a>
+      </div>
   </nav>
   <!-- end of nav element -->
+
+
 
   <!-- header -->
   <header class="header" id="header">
