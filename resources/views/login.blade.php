@@ -57,7 +57,7 @@
                 </div>
                 <div class="input-field">
                     <ion-icon name="lock-closed-outline"></ion-icon>
-                    <input type="password" placeholder="Password">1
+                    <input type="password" placeholder="Password">
                     
                 </div>
                 <input type="submit" value="Sign Up" class="btn">
@@ -81,19 +81,19 @@
         <div class="panels-container">
             <div class="panel left-panel">
                 <div class="content">
-                    <h3>Already Have an Account?</h3>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed, accusantium?</p>
+                    <h3>Udah Punya Akun Mas Bro?</h3>
+                    <p>Nah gitu dong baru gacor</p>
                     <button class="btn" id="login-btn">Login</button>
                 </div>
-                <!-- <img src="" alt=""> -->
+                <img src="img/repairmobil.svg" alt="repair mobil" class="image">
             </div>
             <div class="panel right-panel">
                 <div class="content">
-                    <h3>Already Have an Account?</h3>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed, accusantium?</p>
+                    <h3>Belum Buat Akun Mas Bro?</h3>
+                    <p>Belum punya Mobil? Wanita mana mau sini Join ke Grand Deal Auto</p>
                     <button class="btn" id="regis-btn">Sign Up</button>
                 </div>
-                <!-- <img src="" alt=""> -->
+                <img src="img/electriccar.svg" alt="mobil elektrik" class="image">
             </div>
         </div>
     </div>

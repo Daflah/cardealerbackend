@@ -23,53 +23,74 @@
   <!-- end of preloader -->
 
   <!-- nav element -->
-  <nav class="navbar px-3 navbar-expand-lg" id="navbar">
-    <a href="#" class="navbar-brand">
-      <img src="img/gearLogo.png" alt="company logo" class="img-fluid">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNav">
-      <span class="navbar-icon">
-        <i class="fas fa-bars"></i>
-      </span>
-    </button>
-    <!-- nav links-->
-    <div class="collapse navbar-collapse" id="myNav">
-      <ul class="navbar-nav mx-auto">
-        <li class="nav-item active">
-          <a href="#navbar" class="nav-link">home</a>
-        </li>
-        <li class="nav-item">
-          <a href="#skills" class="nav-link">skills</a>
-        </li>
-        <li class="nav-item">
-          <a href="#inventory" class="nav-link">inventory</a>
-        </li>
-        <li class="nav-item">
-          <a href="#featured" class="nav-link">featured</a>
-        </li>
-      </ul>
-    </div>
-    <!-- social icons -->
-    <div class="nav-icons d-none d-lg-block">
-      <a href="#" class="nav-icon mr-2">
-        <i class="fab fa-facebook"></i>
+  <nav x-data="{ open: false }" class="navbar navbar-expand-lg bg-white border-b border-gray-100 px-3" id="navbar">
+      <a href="#" class="navbar-brand">
+          <img src="img/gearLogo.png" alt="company logo" class="img-fluid">
       </a>
-      <a href="#" class="nav-icon mr-2">
-        <i class="fab fa-twitter"></i>
-      </a>
-      <a href="#" class="nav-icon mr-2">
-        <i class="fab fa-instagram"></i>
-      </a>
-    </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNav">
+          <span class="navbar-icon">
+              <i class="fas fa-bars"></i>
+          </span>
+      </button>
+      <!-- nav links-->
+      <div class="collapse navbar-collapse" id="myNav">
+          <ul class="navbar-nav mx-auto">
+              <li class="nav-item active">
+                  <a href="#navbar" class="nav-link">home</a>
+              </li>
+              <li class="nav-item">
+                  <a href="#skills" class="nav-link">skills</a>
+              </li>
+              <li class="nav-item">
+                  <a href="#inventory" class="nav-link">inventory</a>
+              </li>
+              <li class="nav-item">
+                  <a href="#featured" class="nav-link">featured</a>
+              </li>
+              <!-- Dropdown for User -->
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">
+                      {{ Auth::user()->name }}
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="{{ route('profile.edit') }}">
+                          {{ __('Profile') }}
+                      </a>
+                      <form method="POST" action="{{ route('logout') }}">
+                          @csrf
+                          <a class="dropdown-item" href="{{ route('logout') }}"
+                              onclick="event.preventDefault(); this.closest('form').submit();">
+                              {{ __('Log Out') }}
+                          </a>
+                      </form>
+                  </div>
+              </li>
+          </ul>
+      </div>
+      <!-- social icons -->
+      <div class="nav-icons d-none d-lg-block">
+          <a href="#" class="nav-icon mr-2">
+              <i class="fab fa-facebook"></i>
+          </a>
+          <a href="#" class="nav-icon mr-2">
+              <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="nav-icon mr-2">
+              <i class="fab fa-instagram"></i>
+          </a>
+      </div>
   </nav>
   <!-- end of nav element -->
+
+
 
   <!-- header -->
   <header class="header" id="header">
       <div class="container-fluid">
-          <div class="row height-max align-items-center">
+      @forelse ($dtHeader as $header)
+        <div class="row height-max align-items-center" style="background-image: url('{{ asset('img/'.$header->gambar) }}');">
               <div class="col col-md-9 ml-auto text-right pr-5">
-                  @forelse ($dtHeader as $header)
                       <h6 class="title-heading d-inline-block p-2 text-uppercase">{{ $header->slogan }}</h6>
                       <h2 class="text-uppercase my-2 title">{{ $header->judulmobil }}</h2>
                       <h3 class="text-uppercase">{{ $header->model }}</h3>
@@ -516,84 +537,57 @@
   <!-- end of services section -->
 
   <!-- quotes section -->
-  <section class="quotes py-5 my-3" id="quotes">
-    <div class="container">
-      <!-- section title -->
-      <div class="row my-5">
-        <div class="col d-flex flex-wrap text-uppercase justify-content-center">
-          <h1 class="font-weight-bold align-self-center mx-1">what they</h1>
-          <h1 class="section-title--special mx-1">say</h1>
-        </div>
-      </div>
-      <!-- end of section title -->
-      <div class="row">
-        <!-- single card -->
-        <div class="col-10 mx-auto my-5 col-md-6 col-lg-4">
-          <div class="card">
-            <img src="img/car-american-1.jpeg" alt="car" class="img-fluid card-img-top">
-            <!-- card body -->
-            <div class="card-body text-center customer-card-body">
-              <img src="img/customer-1.jpg" alt="customer" class="rounded-circle customer-img">
-              <div class="card-title">
-                <h5 class="customer-name text-capitalize">customer name</h5>
+  <div class="content">
+        <!-- quotes section -->
+        <section class="quotes py-5 my-3" id="quotes">
+          <div class="container">
+            <!-- section title -->
+            <div class="row my-5">
+              <div class="col d-flex flex-wrap text-uppercase justify-content-center">
+                <h1 class="font-weight-bold align-self-center mx-1">what they</h1>
+                <h1 class="section-title--special mx-1">say</h1>
               </div>
-              <h6 class="customer-job text-capitalize">customer job</h6>
-              <p class="text-left customer-quote mx-auto">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum nemo, beatae nostrum ducimus rerum quod.
-              </p>
-              <span class="customer-icon">
-                <i class="fas fa-quote-left"></i>
-              </span>
+            </div>
+            <!-- end of section title -->
+
+            <div class="row">
+              <!-- single card -->
+              @forelse ($dtKomentar as $komentar)
+                <div class="col-10 mx-auto my-5 col-md-6 col-lg-4">
+                  <div class="card">
+                    <img src="{{ $komentar->gambarmobil ? asset('img/' . $komentar->gambarmobil) : 'img/default-car.jpg' }}" alt="car" class="img-fluid card-img-top">
+                    <!-- card body -->
+                    <div class="card-body text-center customer-card-body">
+                      <img src="{{ $komentar->gambarprofile ? asset('img/' . $komentar->gambarprofile) : 'img/default-profile.jpg' }}" alt="customer" class="rounded-circle customer-img">
+                      <div class="card-title">
+                        <h5 class="customer-name text-capitalize">{{ $komentar->nama }}</h5>
+                      </div>
+                      <h6 class="customer-job text-capitalize">{{ $komentar->job }}</h6>
+                      <p class="text-left customer-quote mx-auto">
+                        {{ $komentar->komentar }}
+                      </p>
+                      <span class="customer-icon">
+                        <i class="fas fa-quote-left"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              @empty
+                <p class="col-12 text-center">Tidak ada data komentar.</p>
+              @endforelse
+              <!-- end of single card -->
             </div>
           </div>
-        </div>
-        <!-- end of single card -->
-        <!-- single card -->
-        <div class="col-10 mx-auto my-5 col-md-6 col-lg-4">
-          <div class="card">
-            <img src="img/car-american-2.jpeg" alt="car" class="img-fluid card-img-top">
-            <!-- card body -->
-            <div class="card-body text-center customer-card-body">
-              <img src="img/customer-2.jpg" alt="customer" class="rounded-circle customer-img">
-              <div class="card-title">
-                <h5 class="customer-name text-capitalize">customer name</h5>
-              </div>
-              <h6 class="customer-job text-capitalize">customer job</h6>
-              <p class="text-left customer-quote mx-auto">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum nemo, beatae nostrum ducimus rerum quod.
-              </p>
-              <span class="customer-icon">
-                <i class="fas fa-quote-left"></i>
-              </span>
-            </div>
-          </div>
-        </div>
-        <!-- end of single card -->
-        <!-- single card -->
-        <div class="col-10 mx-auto my-5 col-md-6 col-lg-4">
-          <div class="card">
-            <img src="img/car-american-3.jpeg" alt="car" class="img-fluid card-img-top">
-            <!-- card body -->
-            <div class="card-body text-center customer-card-body">
-              <img src="img/customer-3.jpg" alt="customer" class="rounded-circle customer-img">
-              <div class="card-title">
-                <h5 class="customer-name text-capitalize">customer name</h5>
-              </div>
-              <h6 class="customer-job text-capitalize">customer job</h6>
-              <p class="text-left customer-quote mx-auto">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum nemo, beatae nostrum ducimus rerum quod.
-              </p>
-              <span class="customer-icon">
-                <i class="fas fa-quote-left"></i>
-              </span>
-            </div>
-          </div>
-        </div>
-        <!-- end of single card -->
-      </div>
-    </div>
-  </section>
-    <!-- end of quotes section -->
+        </section>
+        <!-- end of quotes section -->
+
+        <!-- Button section -->
+        <section class="py-5 my-3 text-center">
+          <a href="{{ route('create-komentar')}}" class="btn btn-primary btn-lg">Buat komenmu sendiri</a>
+        </section>
+        <!-- End of Button section -->
+
+
     <section id="our-team">
         <div class="wrapperrr">
             <section class="quotes py-5 my-3" id="quotes">
