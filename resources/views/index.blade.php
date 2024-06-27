@@ -474,7 +474,7 @@
             <span class="service-icon">
               <i class="fas fa-car-crash"></i>
             </span>
-            <h6 class="text-capitalize service-title">roadside</h6>
+            <h6 class="text-capitalize service-title">roadsidehaha</h6>
             <h5 class="text-uppercase font-weight-bold">assistance</h5>
           </div>
         </div>
