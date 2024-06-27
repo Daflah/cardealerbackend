@@ -42,7 +42,8 @@ class IndexController extends Controller
                 }
                 return $query;
             })
-            ->paginate(5);
+            ->orderBy('id', 'asc') // Ensure consistent order
+            ->paginate(10);
 
         // Retrieve other data
         $dtPegawai = $pegawaiController->showOurTeam();
@@ -54,4 +55,19 @@ class IndexController extends Controller
         return view('index', compact('dtPegawai', 'dtGaleri', 'dtHeader', 'dtJualan', 'dtKomentar', 'dtUnggulan'));
     }
 
+    public function home()
+    {
+        if (Auth::check()) {
+            $usertype = Auth::user()->usertype;
+
+            if ($usertype == 'user') {
+                return redirect()->route('index');
+            } elseif ($usertype == 'admin') {
+                return redirect()->route('admin-beranda');
+            }
+        } else {
+            return redirect()->route('login');
+        }
+    }
 }
+

@@ -216,36 +216,42 @@
         </div>
       </div>
       <!-- cars -->
-      <div class="row">
-        @foreach ($dtJualan as $jualan)
-        <!-- single car -->
-        <div class="col-10 mx-auto my-3 col-md-6 col-lg-4">
-          <div class="card car-card">
-            <img src="{{ asset('img/'.$jualan->gambar) }}" alt="car" class="card-img-top img-fluid car-img">
-            <!-- card body -->
-            <div class="card-body">
-              <div class="car-info d-flex justify-content-between">
-                <!-- first flex child -->
-                <div class="car-text text-uppercase">
-                  <h6 class="font-weight-bold">{{ $jualan->merk }}</h6>
-                  <h6>{{ $jualan->namamobil }}</h6>
-                </div>
-                <!-- second flex child -->
-                <div class="car-value align-self-center py-2 px-3">
+    <div class="row">
+      @foreach ($dtJualan as $jualan)
+      <!-- single car -->
+      <div class="col-10 mx-auto my-3 col-md-6 col-lg-4">
+        <div class="card car-card">
+          <img src="{{ asset('img/'.$jualan->gambar) }}" alt="car" class="card-img-top img-fluid car-img">
+          <!-- card body -->
+          <div class="card-body">
+            <div class="car-info d-flex justify-content-between">
+              <!-- first flex child -->
+              <div class="car-text text-uppercase">
+                <h6 class="font-weight-bold">{{ $jualan->merk }}</h6>
+                <h6>{{ $jualan->namamobil }}</h6>
+              </div>
+              <!-- second flex child -->
+              <div class="car-value align-self-center py-2 px-3">
+                <a href="{{ route('komentar.form', [
+                  'gambar' => $jualan->gambar,
+                  'harga' => $jualan->harga,
+                  'images' => json_encode($jualan->images)
+                ]) }}" class="btn btn-link">
                   <h5>Rp <span class="car-price">{{ number_format($jualan->harga, 0, ',', '.') }}</span></h5>
-                </div>
+                </a>
               </div>
             </div>
-            <div class="card-footer d-flex text-capitalize justify-content-between">
-              <p><span><i class="fas fa-car"></i></span> {{ $jualan->type }}</p>
-              <p><span><i class="fas fa-cogs"></i></span> {{ $jualan->transmission }}</p>
-              <p><span><i class="fas fa-gas-pump"></i></span> {{ $jualan->bensin }}</p>
-            </div>
+          </div>
+          <div class="card-footer d-flex text-capitalize justify-content-between">
+            <p><span><i class="fas fa-car"></i></span> {{ $jualan->type }}</p>
+            <p><span><i class="fas fa-cogs"></i></span> {{ $jualan->transmission }}</p>
+            <p><span><i class="fas fa-gas-pump"></i></span> {{ $jualan->bensin }}</p>
           </div>
         </div>
-        <!-- end of single car -->
-        @endforeach
       </div>
+      <!-- end of single car -->
+      @endforeach
+    </div>
       <!-- end of cars -->
     </div>
   </section>

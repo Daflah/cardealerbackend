@@ -11,6 +11,7 @@ use App\Http\Controllers\KomentarController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UnggulanMobilController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\PembelianController;
 
 /*
 |--------------------------------------------------------------------------
@@ -86,6 +87,21 @@ Route::get('/edit-unggulan/{id}', [UnggulanMobilController::class, 'edit'])->nam
 Route::post('/update-unggulan/{id}', [UnggulanMobilController::class, 'update'])->name('update-unggulan');
 Route::get('/delete-unggulan/{id}', [UnggulanMobilController::class, 'destroy'])->name('delete-unggulan');
 // -------------------------------------- Bagian Unggulan Mobil --------------------------------------
+
+
+
+// -------------------------------------- Bagian Pembelian --------------------------------------
+// Route for Komentar Form
+Route::get('/komentar/form', [KomentarController::class, 'form'])->name('komentar.form');
+
+Route::resource('pembelian', PembelianController::class);
+Route::get('/data-pembelian', [PembelianController::class, 'index'])->name('data-pembelian');
+Route::get('/create-pembelian', [PembelianController::class, 'create'])->name('create-pembelian');
+Route::post('/simpan-pembelian', [PembelianController::class, 'store'])->name('simpan-pembelian');
+Route::get('/edit-pembelian/{id}', [PembelianController::class, 'edit'])->name('edit-pembelian');
+Route::post('/update-pembelian/{id}', [PembelianController::class, 'update'])->name('update-pembelian');
+Route::get('/delete-pembelian/{id}', [PembelianController::class, 'destroy'])->name('delete-pembelian');
+// -------------------------------------- Bagian Pembelian --------------------------------------
 
 
 

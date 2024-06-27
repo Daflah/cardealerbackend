@@ -78,6 +78,11 @@
                   Featured Car
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{ route('data-pembelian')}}" class="nav-link">
+                  Pembelian
+                </a>
+              </li>
             </ul>
           </li>
           <!-- <li class="nav-item">

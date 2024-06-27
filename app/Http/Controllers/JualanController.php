@@ -12,12 +12,24 @@ class JualanController extends Controller
      */
     public function index(Request $request)
     {
+        // Retrieve search parameter
         $search = $request->input('search');
         
+        // Retrieve type parameter (for filtering)
+        $type = $request->input('type');
+
+        // Retrieve jualan data with search and type parameters
         $dtJualan = Jualan::query()
             ->when($search, function ($query, $search) {
                 return $query->where('namamobil', 'like', "%{$search}%");
             })
+            ->when($type, function ($query, $type) {
+                if ($type !== 'All') {
+                    return $query->where('type', $type);
+                }
+                return $query;
+            })
+            ->orderBy('id', 'asc') // Ensure consistent order
             ->paginate(5);
     
         return view('admin.jualan.data-jualan', compact('dtJualan'));
@@ -131,6 +143,11 @@ class JualanController extends Controller
     public function destroy(string $id)
     {
         $jual = Jualan::findOrFail($id);
+        
+        if ($jual->gambar && file_exists(public_path('img/'.$jual->gambar))) {
+            unlink(public_path('img/'.$jual->gambar));
+        }
+
         $jual->delete();
         return back()->with('info', 'Data Berhasil Dihapus!');
     }
