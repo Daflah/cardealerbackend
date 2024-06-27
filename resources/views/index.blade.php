@@ -89,7 +89,7 @@
   <header class="header" id="header">
       <div class="container-fluid">
       @forelse ($dtHeader as $header)
-        <div class="row height-max align-items-center" style="background-image: url('{{ asset('img/'.$header->gambar) }}');">
+        <!-- <div class="row height-max align-items-center" style="background-image: url('{{ asset('img/'.$header->gambar) }}');"> -->
               <div class="col col-md-9 ml-auto text-right pr-5">
                       <h6 class="title-heading d-inline-block p-2 text-uppercase">{{ $header->slogan }}</h6>
                       <h2 class="text-uppercase my-2 title">{{ $header->judulmobil }}</h2>
@@ -299,82 +299,53 @@
 
   <!-- featured section -->
   <section id="featured" class="featured py-5">
-    <div class="container">
-      <!-- section title -->
-      <div class="row mb-5">
-      <div class="col d-flex flex-wrap text-uppercase justify-content-center">
-        <h1 class="font-weight-bold align-self-center mx-1">featured</h1>
-        <h1 class="section-title--special mx-1">cars</h1>
-      </div>
-    </div>
-    <!-- end of section title -->
-    <div class="row">
-      <!-- featured info -->
-      <div class="col-10 mx-auto col-lg-6 featured-info my-3">
-        <!-- single item -->
-        <div class="featured-item my-3 d-flex p-2 text-capitalize align-items-baseline flex-wrap" onclick="changeImage('img/carMercedesE240.jpeg')">
-            <span class="featured-icon mr-2">
-              <i class="fas fa-car"></i>
-            </span>
-            <h5 class="font-weight-bold mx-1">mercedes</h5>
-            <h5 class="mx-1">new model</h5>
+      <div class="container">
+          <!-- section title -->
+          <div class="row mb-5">
+              <div class="col d-flex flex-wrap text-uppercase justify-content-center">
+                  <h1 class="font-weight-bold align-self-center mx-1">featured</h1>
+                  <h1 class="section-title--special mx-1">cars</h1>
+              </div>
           </div>
-        <!-- single item -->
-        <div class="featured-item my-3 d-flex p-2 text-capitalize align-items-baseline flex-wrap" onclick="changeImage('img/carbmwm5.jpeg')">
-            <span class="featured-icon mr-2">
-              <i class="fas fa-car"></i>
-            </span>
-            <h5 class="font-weight-bold mx-1">bmw</h5>
-            <h5 class="mx-1">new model</h5>
-          </div>
-        <!-- single item -->
-        <div class="featured-item my-3 d-flex p-2 text-capitalize align-items-baseline flex-wrap" onclick="changeImage('img/carFerrari.jpeg')">
-            <span class="featured-icon mr-2">
-              <i class="fas fa-car"></i>
-            </span>
-            <h5 class="font-weight-bold mx-1">ferrari</h5>
-            <h5 class="mx-1">new model</h5>
-          </div>
-        <!-- single item -->
-        <div class="featured-item my-3 d-flex p-2 text-capitalize align-items-baseline flex-wrap" onclick="changeImage('img/carrlamborgini.jpeg')">
-            <span class="featured-icon mr-2">
-              <i class="fas fa-car"></i>
-            </span>
-            <h5 class="font-weight-bold mx-1">lamborghini</h5>
-            <h5 class="mx-1">new model</h5>
-          </div>
-        <!-- single item -->
-        <div class="featured-item my-3 d-flex p-2 text-capitalize align-items-baseline flex-wrap" onclick="changeImage('img/cardcAvanti.jpeg')">
-            <span class="featured-icon mr-2">
-              <i class="fas fa-car"></i>
-            </span>
-            <h5 class="font-weight-bold mx-1">dc avanti</h5>
-            <h5 class="mx-1">new model</h5>
-          </div>
-        <!-- single item -->
-        <div class="featured-item my-3 d-flex p-2 text-capitalize align-items-baseline flex-wrap" onclick="changeImage('img/cardcAvanti.jpeg')">
-            <span class="featured-icon mr-2">
-              <i class="fas fa-car"></i>
-            </span>
-            <h5 class="font-weight-bold mx-1">dc avanti</h5>
-            <h5 class="mx-1">new model</h5>
-          </div>
-      </div>
-      <!-- featured image -->
-      <div class="col-10 mx-auto col-lg-6 featured-img align-self-center my-3">
-        <!-- image container -->
-        <div class="img-container">
-            <img src="img/featured-default.jpg" alt="featured photo" class="img-fluid featured-photo" id="featured-photo">
-            <a href="#" class="featured-link">
-              <i class="fas fa-search"></i>
-            </a>
-          </div>
-      </div>
-    </div>
+          <!-- end of section title -->
 
-    </div>
+          <div class="row">
+              <!-- featured info -->
+              <div class="col-10 mx-auto col-lg-6 featured-info my-3">
+                  @forelse ($dtUnggulan as $mobil)
+                  <div class="featured-item my-3 d-flex p-2 text-capitalize align-items-baseline flex-wrap" onclick="changeImage('{{ asset('img/'.$mobil->gambarmobil) }}')">
+                          <span class="featured-icon mr-2">
+                              <i class="fas fa-car"></i>
+                          </span>
+                          <h5 class="font-weight-bold mx-1">{{ $mobil->nama }}</h5>
+                          <h5 class="mx-1">new model</h5>
+                      </div>
+                  @empty
+                      <p>Tidak ada data mobil unggulan.</p>
+                  @endforelse
+              </div>
+              <!-- featured image -->
+              <div class="col-10 mx-auto col-lg-6 featured-img align-self-center my-3">
+                  <!-- image container -->
+                  <div class="img-container">
+                      <img src="{{ asset('img/download(1).jpg') }}" alt="featured photo" class="img-fluid featured-photo" id="featured-photo">
+                      <a href="#" class="featured-link">
+                          <i class="fas fa-search"></i>
+                      </a>
+                  </div>
+              </div>
+          </div>
+      </div>
   </section>
   <!-- end of featured section -->
+
+  <script>
+      function changeImage(src) {
+          document.getElementById('featured-photo').src = src;
+      }
+  </script>
+
+
 
   <!-- gallery section -->
   <section class="gallery py-5" id="gallery">
