@@ -168,61 +168,66 @@
     </div>
   </section>
   <!-- end of skills section -->
-
-  <!-- inventory section -->
-    <section id="inventory" class="inventory py-5">
-      <div class="container">
-        <!-- section title -->
-        <div class="row mb-5">
-          <div class="col d-flex flex-wrap text-uppercase justify-content-center">
-            <h1 class="font-weight-bold align-self-center mx-1">our</h1>
-            <h1 class="section-title--special mx-1">inventory</h1>
-          </div>
-        </div>
-        <!-- end of section title -->
-        <div class="row mb-5">
-          <div class="col-10 mx-auto col-md-12 d-flex justify-content-end">
-            <button class="btn btn-outline-secondary text-uppercase mx-1">all</button>
-            <button class="btn btn-outline-secondary text-uppercase mx-1">american</button>
-            <button class="btn btn-outline-secondary text-uppercase mx-1">german</button>
-          </div>
-        </div>
-        <!-- cars -->
-        <div class="row">
-          @foreach ($dtJualan as $jualan)
-          <!-- single car -->
-          <div class="col-10 mx-auto my-3 col-md-6 col-lg-4">
-            <div class="card car-card">
-              <img src="{{ asset('img/'.$jualan->gambar) }}" alt="car" class="card-img-top img-fluid car-img">
-              <!-- card body -->
-              <div class="card-body">
-                <div class="car-info d-flex justify-content-between">
-                  <!-- first flex child -->
-                  <div class="car-text text-uppercase">
-                    <h6 class="font-weight-bold">{{ $jualan->merk }}</h6>
-                    <h6>{{ $jualan->namamobil }}</h6>
-                  </div>
-                  <!-- second flex child -->
-                  <div class="car-value align-self-center py-2 px-3">
-                    <h5>Rp <span class="car-price">{{ number_format($jualan->harga, 0, ',', '.') }}</span>
-                    </h5>
-                  </div>
-                </div>
+<!-- inventory section -->
+<section id="inventory" class="inventory py-5">
+  <div class="container">
+    <!-- section title -->
+    <div class="row mb-5">
+      <div class="col d-flex flex-wrap text-uppercase justify-content-center">
+        <h1 class="font-weight-bold align-self-center mx-1">our</h1>
+        <h1 class="section-title--special mx-1">inventory</h1>
+      </div>
+    </div>
+    <!-- end of section title -->
+    <div class="row mb-5">
+      <div class="col-10 mx-auto col-md-12 d-flex justify-content-end">
+        <button class="btn btn-outline-secondary text-uppercase mx-1">all</button>
+        <button class="btn btn-outline-secondary text-uppercase mx-1">american</button>
+        <button class="btn btn-outline-secondary text-uppercase mx-1">german</button>
+      </div>
+    </div>
+    <!-- cars -->
+    <div class="row">
+      @foreach ($dtJualan as $jualan)
+      <!-- single car -->
+      <div class="col-10 mx-auto my-3 col-md-6 col-lg-4">
+        <div class="card car-card">
+          <img src="{{ asset('img/'.$jualan->gambar) }}" alt="car" class="card-img-top img-fluid car-img">
+          <!-- card body -->
+          <div class="card-body">
+            <div class="car-info d-flex justify-content-between">
+              <!-- first flex child -->
+              <div class="car-text text-uppercase">
+                <h6 class="font-weight-bold">{{ $jualan->merk }}</h6>
+                <h6>{{ $jualan->namamobil }}</h6>
               </div>
-              <div class="card-footer d-flex text-capitalize justify-content-between">
-                <p><span><i class="fas fa-car"></i></span> {{ $jualan->type }}</p>
-                <p><span><i class="fas fa-cogs"></i></span> {{ $jualan->transmission }}</p>
-                <p><span><i class="fas fa-gas-pump"></i></span> {{ $jualan->bensin }}</p>
+              <!-- second flex child -->
+              <div class="car-value align-self-center py-2 px-3">
+                <a href="{{ route('komentar.form', [
+                  'gambar' => $jualan->gambar,
+                  'harga' => $jualan->harga,
+                  'images' => json_encode($jualan->images)
+                ]) }}" class="btn btn-link">
+                  <h5>Rp <span class="car-price">{{ number_format($jualan->harga, 0, ',', '.') }}</span></h5>
+                </a>
               </div>
             </div>
           </div>
-          <!-- end of single car -->
-          @endforeach
+          <div class="card-footer d-flex text-capitalize justify-content-between">
+            <p><span><i class="fas fa-car"></i></span> {{ $jualan->type }}</p>
+            <p><span><i class="fas fa-cogs"></i></span> {{ $jualan->transmission }}</p>
+            <p><span><i class="fas fa-gas-pump"></i></span> {{ $jualan->bensin }}</p>
+          </div>
         </div>
-        <!-- end of cars -->
       </div>
-    </section>
-    <!-- end of inventory section -->
+      <!-- end of single car -->
+      @endforeach
+    </div>
+    <!-- end of cars -->
+  </div>
+</section>
+<!-- end of inventory section -->
+
 
     <!-- other sections (e.g., team section) -->
     <!-- Example section -->

@@ -7,6 +7,8 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\HeaderController;
 use App\Http\Controllers\JualanController;
 use App\Http\Controllers\KomentarController;
+use App\Http\Controllers\PembelianController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -72,6 +74,14 @@ Route::get('/delete-komentar/{id}', [KomentarController::class, 'destroy'])->nam
 // -------------------------------------- Bagian Jualan --------------------------------------
 
 
+
+
+
+
+
+
+
+
 // -------------------------------------- Bagian Coba Gabungin --------------------------------------
 
 // Route::get('/index', [PegawaiController::class, 'showOurTeam' && GaleriController::class, 'showGallery' ])->name('index');
@@ -93,6 +103,21 @@ Route::get('/index', [IndexController::class, 'index'])->name('index');
 // });
 
 // -------------------------------------- Bagian Coba Gabungin --------------------------------------
+
+// Route for Komentar Form
+Route::get('/komentar/form', [KomentarController::class, 'form'])->name('komentar.form');
+
+
+
+Route::resource('pembelian', PembelianController::class);
+Route::get('/data-pembelian', [PembelianController::class, 'index'])->name('data-pembelian');
+Route::get('/create-pembelian', [PembelianController::class, 'create'])->name('create-pembelian');
+Route::post('/simpan-pembelian', [PembelianController::class, 'store'])->name('simpan-pembelian');
+Route::get('/edit-pembelian/{id}', [PembelianController::class, 'edit'])->name('edit-pembelian');
+Route::post('/update-pembelian/{id}', [PembelianController::class, 'update'])->name('update-pembelian');
+Route::get('/delete-pembelian/{id}', [PembelianController::class, 'destroy'])->name('delete-pembelian');
+
+
 
 
 Route::get('/login', function () {

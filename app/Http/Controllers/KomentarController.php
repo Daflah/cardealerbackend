@@ -31,8 +31,8 @@ class KomentarController extends Controller
     {
         // Validasi input
         $request->validate([
-            'gambarmobil' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validasi untuk gambar mobil
-            'gambarprofile' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validasi untuk gambar profil
+            'gambarmobil' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'gambarprofile' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'nama' => 'required|string|max:100',
             'job' => 'required|string|max:100',
             'komentar' => 'required|string|max:500',
@@ -42,18 +42,18 @@ class KomentarController extends Controller
         if ($request->hasFile('gambarmobil')) {
             $fileMobil = $request->file('gambarmobil');
             $namaFileMobil = time() . '_mobil_' . $fileMobil->getClientOriginalName();
-            $fileMobil->move(public_path('img'), $namaFileMobil); // Simpan gambar mobil di folder public/img
+            $fileMobil->move(public_path('img'), $namaFileMobil);
         } else {
-            $namaFileMobil = null; // Atur nilai default jika tidak ada file yang diunggah
+            $namaFileMobil = null;
         }
 
         // Proses upload gambar profil
         if ($request->hasFile('gambarprofile')) {
             $fileProfile = $request->file('gambarprofile');
             $namaFileProfile = time() . '_profile_' . $fileProfile->getClientOriginalName();
-            $fileProfile->move(public_path('img'), $namaFileProfile); // Simpan gambar profil di folder public/img
+            $fileProfile->move(public_path('img'), $namaFileProfile);
         } else {
-            $namaFileProfile = null; // Atur nilai default jika tidak ada file yang diunggah
+            $namaFileProfile = null;
         }
 
         // Simpan data komentar ke database
@@ -91,8 +91,8 @@ class KomentarController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'gambarmobil' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validasi untuk gambar mobil
-            'gambarprofile' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validasi untuk gambar profil
+            'gambarmobil' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'gambarprofile' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'nama' => 'required|string|max:100',
             'job' => 'required|string|max:100',
             'komentar' => 'required|string|max:500',
@@ -105,12 +105,10 @@ class KomentarController extends Controller
             $namaFileMobil = time() . '_mobil_' . $fileMobil->getClientOriginalName();
             $fileMobil->move(public_path('img'), $namaFileMobil);
 
-            // Hapus gambar mobil lama jika ada
             if ($komentar->gambarmobil && file_exists(public_path('img/'.$komentar->gambarmobil))) {
                 unlink(public_path('img/'.$komentar->gambarmobil));
             }
 
-            // Update gambar mobil dengan yang baru
             $komentar->gambarmobil = $namaFileMobil;
         }
 
@@ -119,12 +117,10 @@ class KomentarController extends Controller
             $namaFileProfile = time() . '_profile_' . $fileProfile->getClientOriginalName();
             $fileProfile->move(public_path('img'), $namaFileProfile);
 
-            // Hapus gambar profil lama jika ada
             if ($komentar->gambarprofile && file_exists(public_path('img/'.$komentar->gambarprofile))) {
                 unlink(public_path('img/'.$komentar->gambarprofile));
             }
 
-            // Update gambar profil dengan yang baru
             $komentar->gambarprofile = $namaFileProfile;
         }
 
@@ -146,12 +142,10 @@ class KomentarController extends Controller
     {
         $komentar = Komentar::findOrFail($id);
 
-        // Hapus gambar mobil jika ada
         if ($komentar->gambarmobil && file_exists(public_path('img/'.$komentar->gambarmobil))) {
             unlink(public_path('img/'.$komentar->gambarmobil));
         }
 
-        // Hapus gambar profil jika ada
         if ($komentar->gambarprofile && file_exists(public_path('img/'.$komentar->gambarprofile))) {
             unlink(public_path('img/'.$komentar->gambarprofile));
         }
@@ -160,9 +154,17 @@ class KomentarController extends Controller
         return back()->with('info', 'Komentar Berhasil Dihapus!');
     }
 
+    /**
+     * Menampilkan form komentar.
+     */
+    public function form()
+    {
+        return view('user.komentar.form');
+    }
+
     public function showKomentar()
     {
-        $komentar = Komentar::all(); // Sesuaikan dengan query yang diperlukan
+        $komentar = Komentar::all();
         return $komentar;
     }
 }
