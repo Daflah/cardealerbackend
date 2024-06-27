@@ -86,6 +86,7 @@ form.regis-form{
     border-radius: 50px;
     display: flex;
     align-items: center;
+    overflow: hidden;
 }
 
 .input-field ion-icon{

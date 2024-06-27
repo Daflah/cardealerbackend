@@ -36,7 +36,7 @@
       <div class="collapse navbar-collapse" id="myNav">
           <ul class="navbar-nav mx-auto">
               <li class="nav-item active">
-                  <a href="#navbar" class="nav-link">home</a>
+                  <a href="#header" class="nav-link">home</a>
               </li>
               <li class="nav-item">
                   <a href="#skills" class="nav-link">skills</a>
@@ -379,67 +379,26 @@
         </div>
       </div>
       <!-- end of section title -->
-
-      <div class="row">
-        <!-- first column -->
-        <div class="col-sm-6">
-          <div class="gallery-item">
-            @if(isset($dtGaleri[0]))
-            <img src="{{ asset('img/'.$dtGaleri[0]->gambar) }}" alt="{{ $dtGaleri[0]->judul }}" class="img-fluid gallery-img">
-            @else
-            <p>No image available</p>
-            @endif
-          </div>
-        </div>
-        <!-- end of first column -->
-
-        <!-- second column -->
-        <div class="col-sm-6 d-flex flex-column justify-content-between">
-          <div class="row">
-            <!-- single item -->
-            @if(isset($dtGaleri[1]))
-            <div class="col-sm-6">
-              <div class="gallery-item">
-                <img src="{{ asset('img/'.$dtGaleri[1]->gambar) }}" alt="{{ $dtGaleri[1]->judul }}" class="img-fluid gallery-img">
-              </div>
+        <div class="gallery-img">
+    <div class="content-slide">
+        @foreach ($dtGaleri as $index => $galeri)
+            <div class="imgslide">
+                <div class="numberslide">{{ $index + 1 }}/{{ count($dtGaleri) }}</div>
+                <img src="{{ asset('img/'.$galeri->gambar) }}" alt="{{ $galeri->judul }}">
+                <div class="text-slide">{{ $galeri['judul'] }}</div>
+                <a class="prev" onclick="nextSlide(-1)">&#10094;</a>
+                <a class="next" onclick="nextSlide(1)">&#10095;</a>
             </div>
-            <!-- end of single item -->
-            @endif
+        @endforeach
+    </div>
 
-            <!-- single item -->
-            @if(isset($dtGaleri[2]))
-            <div class="col-sm-6">
-              <div class="gallery-item">
-                <img src="{{ asset('img/'.$dtGaleri[2]->gambar) }}" alt="{{ $dtGaleri[2]->judul }}" class="img-fluid gallery-img">
-              </div>
-            </div>
-            <!-- end of single item -->
-            @endif
-          </div>
+    <div class="page">
+        @for ($i = 1; $i <= count($dtGaleri); $i++)
+            <span class="dot" onclick="dotSlide({{ $i }})"></span>
+        @endfor
+    </div>
+</div>
 
-          <div class="row">
-            <!-- single item -->
-            @if(isset($dtGaleri[3]))
-            <div class="col-sm-6">
-              <div class="gallery-item">
-                <img src="{{ asset('img/'.$dtGaleri[3]->gambar) }}" alt="{{ $dtGaleri[3]->judul }}" class="img-fluid gallery-img">
-              </div>
-            </div>
-            <!-- end of single item -->
-            @endif
-
-            <!-- single item -->
-            @if(isset($dtGaleri[4]))
-            <div class="col-sm-6">
-              <div class="gallery-item">
-                <img src="{{ asset('img/'.$dtGaleri[4]->gambar) }}" alt="{{ $dtGaleri[4]->judul }}" class="img-fluid gallery-img">
-              </div>
-            </div>
-            <!-- end of single item -->
-            @endif
-          </div>
-        </div>
-        <!-- end of second column -->
       </div>
     </div>
   </section>
