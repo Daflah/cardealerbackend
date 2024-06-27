@@ -1,5 +1,10 @@
-Untuk Memakai website kami ada beberapa hal dulu yang perlu diperhatikan seperti instalasi php extension dan sebagainya.
+Kelompok Grand Deal Auto
+- Daflah Tsany Gusra_535220177
+- Ravelino Radissey_535220181
+- Kenneth Marlon Tan_535220183
+- Wenly Rusli_535220258
 
+Untuk Memakai website kami ada beberapa hal dulu yang perlu diperhatikan seperti instalasi php extension dan sebagainya.
 dari website kami, kami memakai sweetalert untuk pesan notif pemberitahuan serta breeze untuk login dan register user
 
 Step Instal Sweetalert
