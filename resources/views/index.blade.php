@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="css/main.css">
   <!-- font awesome -->
   <script src="js/all.js"></script>
-  <title>car dealership</title>
+  <title>Grand Deal Auto</title>
   <style>
   </style>
 </head>
@@ -70,13 +70,13 @@
       </div>
       <!-- social icons -->
       <div class="nav-icons d-none d-lg-block">
-          <a href="#" class="nav-icon mr-2">
+          <a href="https://www.facebook.com/share/PFhpdZMCpMFwpFPJ/?mibextid=qi2Omg" class="nav-icon mr-2">
               <i class="fab fa-facebook"></i>
           </a>
-          <a href="#" class="nav-icon mr-2">
+          <a href="https://x.com/InfoHonda" class="nav-icon mr-2">
               <i class="fab fa-twitter"></i>
           </a>
-          <a href="#" class="nav-icon mr-2">
+          <a href="https://www.instagram.com/deinamotor?igsh=Ym13aWZta2lzMjc5" class="nav-icon mr-2">
               <i class="fab fa-instagram"></i>
           </a>
       </div>
@@ -89,7 +89,7 @@
   <header class="header" id="header">
       <div class="container-fluid">
       @forelse ($dtHeader as $header)
-        <!-- <div class="row height-max align-items-center" style="background-image: url('{{ asset('img/'.$header->gambar) }}');"> -->
+        <div class="row height-max align-items-center" style="background-image: url('{{ asset('img/'.$header->gambar) }}');">
               <div class="col col-md-9 ml-auto text-right pr-5">
                       <h6 class="title-heading d-inline-block p-2 text-uppercase">{{ $header->slogan }}</h6>
                       <h2 class="text-uppercase my-2 title">{{ $header->judulmobil }}</h2>
@@ -139,7 +139,7 @@
           </h6>
           <div class="skills-underline"></div>
           <p class="w-75 mx-auto text-muted">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime dignissimos necessitatibus aut.
+            Explore a wide selection of all major car brands.
           </p>
         </div>
         <!-- end of single skill -->
@@ -153,7 +153,7 @@
           </h6>
           <div class="skills-underline"></div>
           <p class="w-75 mx-auto text-muted">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime dignissimos necessitatibus aut.
+            Enjoy free and helpful customer support services.
           </p>
         </div>
         <!-- end of single skill -->
@@ -167,7 +167,7 @@
           </h6>
           <div class="skills-underline"></div>
           <p class="w-75 mx-auto text-muted">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime dignissimos necessitatibus aut.
+            Experience our caring and dedicated service approach.
           </p>
         </div>
         <!-- end of single skill -->
@@ -181,7 +181,7 @@
           </h6>
           <div class="skills-underline"></div>
           <p class="w-75 mx-auto text-muted">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime dignissimos necessitatibus aut.
+            Find affordable pricing options that fit your budget.
           </p>
         </div>
         <!-- end of single skill -->
@@ -190,75 +190,67 @@
   </section>
   <!-- end of skills section -->
 
+
   <!-- inventory section -->
   <section id="inventory" class="inventory py-5">
-  <div class="container">
-    <!-- section title -->
-    <div class="row mb-5">
-      <div class="col d-flex flex-wrap text-uppercase justify-content-center">
-        <h1 class="font-weight-bold align-self-center mx-1">our</h1>
-        <h1 class="section-title--special mx-1">inventory</h1>
-      </div>
-    </div>
-    <!-- end of section title -->
-    <div class="row mb-5">
-      <div class="col-10 mx-auto col-md-12 d-flex justify-content-end">
-        <form method="GET" action="{{ route('index') }}" class="d-flex">
-          <input type="text" name="search" placeholder="Search" value="{{ request('search') }}" class="form-control mx-1">
-          
-          <select name="sort_by" class="form-control mx-1">
-            <option value="merk" {{ request('sort_by') == 'merk' ? 'selected' : '' }}>Merk</option>
-            <option value="harga" {{ request('sort_by') == 'harga' ? 'selected' : '' }}>Harga</option>
-            <option value="type" {{ request('sort_by') == 'type' ? 'selected' : '' }}>Type</option>
-          </select>
-
-          <select name="sort_order" class="form-control mx-1">
-            <option value="asc" {{ request('sort_order') == 'asc' ? 'selected' : '' }}>Ascending</option>
-            <option value="desc" {{ request('sort_order') == 'desc' ? 'selected' : '' }}>Descending</option>
-          </select>
-
-          <button type="submit" class="btn btn-outline-secondary text-uppercase mx-1">Search & Sort</button>
-        </form>
-      </div>
-    </div>
-    <!-- cars -->
-    <div class="row">
-      @foreach ($dtJualan as $jualan)
-      <!-- single car -->
-      <div class="col-10 mx-auto my-3 col-md-6 col-lg-4">
-        <div class="card car-card">
-          <img src="{{ asset('img/'.$jualan->gambar) }}" alt="car" class="card-img-top img-fluid car-img">
-          <!-- card body -->
-          <div class="card-body">
-            <div class="car-info d-flex justify-content-between">
-              <!-- first flex child -->
-              <div class="car-text text-uppercase">
-                <h6 class="font-weight-bold">{{ $jualan->merk }}</h6>
-                <h6>{{ $jualan->namamobil }}</h6>
-              </div>
-              <!-- second flex child -->
-              <div class="car-value align-self-center py-2 px-3">
-                <h5>Rp <span class="car-price">{{ number_format($jualan->harga, 0, ',', '.') }}</span>
-                </h5>
-              </div>
-            </div>
-          </div>
-          <div class="card-footer d-flex text-capitalize justify-content-between">
-            <p><span><i class="fas fa-car"></i></span> {{ $jualan->type }}</p>
-            <p><span><i class="fas fa-cogs"></i></span> {{ $jualan->transmission }}</p>
-            <p><span><i class="fas fa-gas-pump"></i></span> {{ $jualan->bensin }}</p>
-          </div>
+    <div class="container">
+      <!-- section title -->
+      <div class="row mb-5">
+        <div class="col d-flex flex-wrap text-uppercase justify-content-center">
+          <h1 class="font-weight-bold align-self-center mx-1">our</h1>
+          <h1 class="section-title--special mx-1">inventory</h1>
         </div>
       </div>
-      <!-- end of single car -->
-      @endforeach
+      <!-- end of section title -->
+      <div class="row mb-5">
+        <div class="col-10 mx-auto col-md-12 d-flex justify-content-end">
+          <form action="{{ route('index') }}" method="GET" class="form-inline">
+              <button type="submit" name="type" value="Sedan" class="btn btn-outline-secondary text-uppercase mx-1">Sedan</button>
+              <button type="submit" name="type" value="Jeep" class="btn btn-outline-secondary text-uppercase mx-1">Jeep</button>
+              <button type="submit" name="type" value="SUV" class="btn btn-outline-secondary text-uppercase mx-1">SUV</button>
+              <button type="submit" name="type" value="Truck" class="btn btn-outline-secondary text-uppercase mx-1">Truck</button>
+              <button type="submit" name="type" value="Van" class="btn btn-outline-secondary text-uppercase mx-1">Van</button>
+              <button type="submit" name="type" value="" class="btn btn-outline-secondary text-uppercase mx-1">All</button>
+              <input type="hidden" name="search" value="{{ request()->input('search') }}">
+          </form>
+        </div>
+      </div>
+      <!-- cars -->
+      <div class="row">
+        @foreach ($dtJualan as $jualan)
+        <!-- single car -->
+        <div class="col-10 mx-auto my-3 col-md-6 col-lg-4">
+          <div class="card car-card">
+            <img src="{{ asset('img/'.$jualan->gambar) }}" alt="car" class="card-img-top img-fluid car-img">
+            <!-- card body -->
+            <div class="card-body">
+              <div class="car-info d-flex justify-content-between">
+                <!-- first flex child -->
+                <div class="car-text text-uppercase">
+                  <h6 class="font-weight-bold">{{ $jualan->merk }}</h6>
+                  <h6>{{ $jualan->namamobil }}</h6>
+                </div>
+                <!-- second flex child -->
+                <div class="car-value align-self-center py-2 px-3">
+                  <h5>Rp <span class="car-price">{{ number_format($jualan->harga, 0, ',', '.') }}</span></h5>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer d-flex text-capitalize justify-content-between">
+              <p><span><i class="fas fa-car"></i></span> {{ $jualan->type }}</p>
+              <p><span><i class="fas fa-cogs"></i></span> {{ $jualan->transmission }}</p>
+              <p><span><i class="fas fa-gas-pump"></i></span> {{ $jualan->bensin }}</p>
+            </div>
+          </div>
+        </div>
+        <!-- end of single car -->
+        @endforeach
+      </div>
+      <!-- end of cars -->
     </div>
-    <!-- end of cars -->
-  </div>
-</section>
+  </section>
+  <!-- end of inventory section -->
 
-
-    <!-- end of inventory section -->
 
     <!-- other sections (e.g., team section) -->
     <!-- Example section -->
@@ -289,7 +281,7 @@
           <div class="question-text w-75">
             <h4 class="question-title text-capitalize font-weight-bold">are you looking for a car?</h4>
             <p class="question-info">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, ad.
+              Discover our wide selection of cars and find the perfect one for you.
             </p>
           </div>
         </div>
@@ -303,7 +295,7 @@
           <div class="question-text w-75">
             <h4 class="question-title text-capitalize font-weight-bold">do you want to sell a car?</h4>
             <p class="question-info">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, ad.
+              Sell your car hassle-free with our expert assistance and reach potential buyers.
             </p>
           </div>
         </div>
@@ -459,14 +451,21 @@
 
         <!-- single column -->
         <div class="col-8 mx-auto col-sm-6 col-md-4 my-3">
-          <div class="service py-5 pl-4">
+          <div class="service py-5 pl-4" onclick="openGoogleMaps()">
             <span class="service-icon">
-              <i class="fas fa-car-battery"></i>
+              <i class="fas fa-map-marked-alt"></i> <!-- Menggunakan ikon map dari FontAwesome -->
             </span>
-            <h6 class="text-capitalize service-title">battery</h6>
-            <h5 class="text-uppercase font-weight-bold">replacement</h5>
+            <h6 class="text-capitalize service-title">google maps</h6>
+            <h5 class="text-uppercase font-weight-bold">location</h5>
           </div>
         </div>
+
+        <script>
+          function openGoogleMaps() {
+            window.open('https://www.google.com/maps/place/Deina+motor/@-6.2281014,106.7760226,17z/data=!3m1!4b1!4m6!3m5!1s0x2e69f1ce9856ac85:0xd22eb75bf4804824!8m2!3d-6.2281067!4d106.7785975!16s%2Fg%2F11lds42rk5?entry=ttu', '_blank');
+          }
+        </script>
+
         <!-- end of single column -->
         <!-- single column -->
         <div class="col-8 mx-auto col-sm-6 col-md-4 my-3">
@@ -583,19 +582,19 @@
   <!-- footer -->
   <footer class="footer py-5" id="footer">
     <div class="footer-icons d-flex flex-wrap justify-content-around">
-      <a href="#" class="footer-icon">
+      <a href="https://www.facebook.com/share/PFhpdZMCpMFwpFPJ/?mibextid=qi2Omg" class="footer-icon">
         <i class="fab fa-facebook"></i>
       </a>
-      <a href="#" class="footer-icon">
+      <a href="https://www.instagram.com/deinamotor?igsh=Ym13aWZta2lzMjc5" class="footer-icon">
         <i class="fab fa-instagram"></i>
       </a>
-      <a href="#" class="footer-icon">
+      <a href="https://www.semuabis.com/deina-motor_1q-0818-839-770" class="footer-icon">
         <i class="fab fa-google-plus"></i>
       </a>
-      <a href="#" class="footer-icon">
+      <a href="https://x.com/InfoHonda" class="footer-icon">
         <i class="fab fa-twitter"></i>
       </a>
-      <a href="#" class="footer-icon">
+      <a href="https://www.linkedin.com/jobs/view/automotive-dealer-account-manager-at-armatus-dealer-uplift-llc-3936210466?position=1&pageNum=0&refId=DE49891PBQbSM%2BjyjDo8GQ%3D%3D&trackingId=jlEI88ZszNtmbRZqNpRKFQ%3D%3D&trk=public_jobs_jserp-result_search-card" class="footer-icon">
         <i class="fab fa-linkedin"></i>
       </a>
     </div>

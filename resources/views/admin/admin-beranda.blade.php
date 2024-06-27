@@ -41,68 +41,38 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="content">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-lg-6">
-            <div class="card">
+          <div class="col-lg-6 mb-4">
+            <div class="card h-100">
+              <img src="{{ asset('img/download(2).jpg') }}" class="card-img-top" alt="Admin Car">
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-
+                <h5 class="card-title">Admin Car</h5>
                 <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk of the card's
-                  content.
+                  Allhamdulilah admin daflah mempunyai mobil seperti gambar diatas, "Berkerja lah sekeras mungkin sampai es Antartika kalah keras".
                 </p>
-
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-              </div>
-            </div>
-
-            <div class="card card-primary card-outline">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk of the card's
-                  content.
-                </p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-              </div>
-            </div><!-- /.card -->
-          </div>
-          <!-- /.col-md-6 -->
-          <div class="col-lg-6">
-            <div class="card">
-              <div class="card-header">
-                <h5 class="m-0">Featured</h5>
-              </div>
-              <div class="card-body">
-                <h6 class="card-title">Special title treatment</h6>
-
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-
-            <div class="card card-primary card-outline">
-              <div class="card-header">
-                <h5 class="m-0">Featured</h5>
-              </div>
-              <div class="card-body">
-                <h6 class="card-title">Special title treatment</h6>
-
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
               </div>
             </div>
           </div>
-          <!-- /.col-md-6 -->
+
+          <div class="col-lg-6 mb-4">
+            <div class="card h-100 card-primary card-outline">
+              <img src="{{ asset('img/download(3).jpg') }}" class="card-img-top" alt="Employee Car">
+              <div class="card-body">
+                <h5 class="card-title">Employee Car</h5>
+                <p class="card-text">
+                  Ini adalah contoh mobil para pekerja yang berada disini, sangat bagus bukan? bekerjalah sekeras mungkin
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+    </div>
+    <!-- /.content-wrapper -->
+
+
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

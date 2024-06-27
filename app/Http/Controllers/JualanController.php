@@ -11,28 +11,17 @@ class JualanController extends Controller
      * Display a listing of the resource.
      */
     public function index(Request $request)
-{
-    $query = Jualan::query();
-
-    // Handle sorting
-    if ($request->has('sort_by') && $request->has('sort_order')) {
-        $query->orderBy($request->sort_by, $request->sort_order);
-    } else {
-        $query->orderBy('id', 'asc'); // Default sorting
+    {
+        $search = $request->input('search');
+        
+        $dtJualan = Jualan::query()
+            ->when($search, function ($query, $search) {
+                return $query->where('namamobil', 'like', "%{$search}%");
+            })
+            ->paginate(5);
+    
+        return view('admin.jualan.data-jualan', compact('dtJualan'));
     }
-
-    // Handle search
-    if ($request->has('search')) {
-        $query->where('merk', 'like', '%' . $request->search . '%')
-              ->orWhere('namamobil', 'like', '%' . $request->search . '%');
-    }
-
-    // Pagination
-    $dtJualan = $query->paginate(5);
-
-    return view('index', compact('dtJualan'));
-}
-
 
     /**
      * Show the form for creating a new resource.

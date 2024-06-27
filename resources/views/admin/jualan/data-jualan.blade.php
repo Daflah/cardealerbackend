@@ -36,10 +36,12 @@
     <!-- Main content -->
     <div class="content">
         <div class="card card-info card-outline">
-            <div class="card-header">
-                <div class="card-tools">
-                    <a href="{{route('create-jualan')}}" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
-                </div>
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <form action="{{ route('data-jualan') }}" method="GET" class="form-inline">
+                    <input type="text" name="search" class="form-control" placeholder="Search by name" value="{{ request('search') }}">
+                    <button type="submit" class="btn btn-primary ml-2">Search</button>
+                </form>
+                <a href="{{ route('create-jualan') }}" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
             </div>
 
             <div class="card-body">
@@ -63,11 +65,11 @@
                             Tidak ada gambar
                           @endif
                         </td>
-                        <td>{{$item->merk}}</td>
-                        <td>{{$item->namamobil}}</td>
-                        <td>{{$item->type}}</td>
-                        <td>{{$item->transmission}}</td>
-                        <td>{{$item->bensin}}</td>
+                        <td>{{ $item->merk }}</td>
+                        <td>{{ $item->namamobil }}</td>
+                        <td>{{ $item->type }}</td>
+                        <td>{{ $item->transmission }}</td>
+                        <td>{{ $item->bensin }}</td>
                         <td>{{ number_format($item->harga, 2) }}</td>
                         <td>
                           <a href="{{ route('edit-jualan', $item->id) }}"><i class="fas fa-pen-to-square"></i></a> | 
@@ -78,7 +80,7 @@
                 </table>
             </div>
             <div class="d-flex justify-content-center">
-                    {{ $dtJualan->links() }}
+                    {{ $dtJualan->appends(['search' => request('search')])->links() }}
             </div>
         </div>
       

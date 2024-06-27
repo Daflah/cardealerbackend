@@ -10,9 +10,16 @@ class UnggulanMobilController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $dtUnggulanMobil = UnggulanMobil::orderBy('id', 'asc')->paginate(5);
+        $search = $request->input('search');
+        
+        $dtUnggulanMobil = UnggulanMobil::query()
+            ->when($search, function ($query, $search) {
+                return $query->where('nama', 'like', "%{$search}%");
+            })
+            ->paginate(10);
+    
         return view('admin.unggulan-mobil.data-unggulan', compact('dtUnggulanMobil'));
     }
 

@@ -36,10 +36,12 @@
     <!-- Main content -->
     <div class="content">
         <div class="card card-info card-outline">
-            <div class="card-header">
-                <div class="card-tools">
-                    <a href="{{route('create-galeri')}}" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
-                </div>
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <form action="{{ route('data-galeri') }}" method="GET" class="form-inline">
+                    <input type="text" name="search" class="form-control" placeholder="Search by title" value="{{ request('search') }}">
+                    <button type="submit" class="btn btn-primary ml-2">Search</button>
+                </form>
+                <a href="{{ route('create-galeri') }}" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
             </div>
 
             <div class="card-body">
@@ -58,7 +60,7 @@
                             Tidak ada gambar
                           @endif
                         </td>
-                        <td>{{$item->judul}}</td>
+                        <td>{{ $item->judul }}</td>
                         <td>
                           <a href="{{ route('edit-galeri', $item->id) }}"><i class="fas fa-pen-to-square"></i></a> | 
                           <a href="{{ route('delete-galeri', $item->id) }}"><i class="fas fa-trash" style="color:red"></i></a>
@@ -68,7 +70,7 @@
                 </table>
             </div>
             <div class="d-flex justify-content-center">
-                    {{ $dtGaleri->links() }}
+                    {{ $dtGaleri->appends(['search' => request('search')])->links() }}
             </div>
         </div>
       
