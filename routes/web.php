@@ -64,6 +64,7 @@ Route::post('/simpan-jualan', [JualanController::class, 'store'])->name('simpan-
 Route::get('/edit-jualan/{id}', [JualanController::class, 'edit'])->name('edit-jualan');
 Route::post('/update-jualan/{id}', [JualanController::class, 'update'])->name('update-jualan');
 Route::get('/delete-jualan/{id}', [JualanController::class, 'destroy'])->name('delete-jualan');
+Route::get('/jualan', [JualanController::class, 'index'])->name('jualan.index'); //ravel tambah buat tes search sort
 // -------------------------------------- Bagian Jualan --------------------------------------
 
 
@@ -170,6 +171,14 @@ Route::middleware('auth')->group(function () {
 });
 // -------------------------------------- Bagian Profile Routes --------------------------------------
 
+
+Route::get('/service', function () {
+    return view('service');
+})->name('service');
+
+Route::get('/roadside', function() {
+    return view('roadside');
+})->name('roadside');
 
 
 // Auth Routes

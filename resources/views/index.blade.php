@@ -443,15 +443,18 @@
       <div class="row my-3">
         <!-- single column -->
         <div class="col-8 mx-auto col-sm-6 col-md-4 my-3">
-          <div class="service py-5 pl-4">
-            <span class="service-icon">
-              <i class="fas fa-cogs"></i>
-            </span>
-            <h6 class="text-capitalize service-title">vehicle</h6>
-            <h5 class="text-uppercase font-weight-bold">repair</h5>
-          </div>
+          <a href="{{ route('service') }}" class="text-decoration-none">
+            <div class="service py-5 pl-4">
+              <span class="service-icon">
+                <i class="fas fa-cogs"></i>
+              </span>
+              <h6 class="text-capitalize service-title">vehicle</h6>
+              <h5 class="text-uppercase font-weight-bold">repair</h5>
+            </div>
+          </a>
         </div>
         <!-- end of single column -->
+
         <!-- single column -->
         <div class="col-8 mx-auto col-sm-6 col-md-4 my-3">
           <div class="service py-5 pl-4" onclick="openGoogleMaps()">
@@ -472,11 +475,12 @@
         <!-- end of single column -->
         <!-- single column -->
         <div class="col-8 mx-auto col-sm-6 col-md-4 my-3">
+          <a href="{{ route('roadside') }}" class="text-decoration-none">
           <div class="service py-5 pl-4">
             <span class="service-icon">
               <i class="fas fa-car-crash"></i>
             </span>
-            <h6 class="text-capitalize service-title">roadside</h6>
+            <h6 class="text-capitalize service-title">roadsidehaha</h6>
             <h5 class="text-uppercase font-weight-bold">assistance</h5>
           </div>
         </div>
