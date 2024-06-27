@@ -10,9 +10,16 @@ class GaleriController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $dtGaleri = Galeri::orderBy('id', 'asc')->paginate(5);
+        $search = $request->input('search');
+        
+        $dtGaleri = Galeri::query()
+            ->when($search, function ($query, $search) {
+                return $query->where('judul', 'like', "%{$search}%");
+            })
+            ->paginate(5);
+    
         return view('admin.galeri.data-galeri', compact('dtGaleri'));
     }
 

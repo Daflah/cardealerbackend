@@ -10,9 +10,16 @@ class JualanController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $dtJualan = Jualan::orderBy('id', 'asc')->paginate(5);
+        $search = $request->input('search');
+        
+        $dtJualan = Jualan::query()
+            ->when($search, function ($query, $search) {
+                return $query->where('namamobil', 'like', "%{$search}%");
+            })
+            ->paginate(5);
+    
         return view('admin.jualan.data-jualan', compact('dtJualan'));
     }
 

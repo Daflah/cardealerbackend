@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="css/main.css">
   <!-- font awesome -->
   <script src="js/all.js"></script>
-  <title>car dealership</title>
+  <title>Grand Deal Auto</title>
   <style>
   </style>
 </head>
@@ -70,13 +70,13 @@
       </div>
       <!-- social icons -->
       <div class="nav-icons d-none d-lg-block">
-          <a href="#" class="nav-icon mr-2">
+          <a href="https://www.facebook.com/share/PFhpdZMCpMFwpFPJ/?mibextid=qi2Omg" class="nav-icon mr-2">
               <i class="fab fa-facebook"></i>
           </a>
-          <a href="#" class="nav-icon mr-2">
+          <a href="https://x.com/InfoHonda" class="nav-icon mr-2">
               <i class="fab fa-twitter"></i>
           </a>
-          <a href="#" class="nav-icon mr-2">
+          <a href="https://www.instagram.com/deinamotor?igsh=Ym13aWZta2lzMjc5" class="nav-icon mr-2">
               <i class="fab fa-instagram"></i>
           </a>
       </div>
@@ -89,7 +89,7 @@
   <header class="header" id="header">
       <div class="container-fluid">
       @forelse ($dtHeader as $header)
-        <!-- <div class="row height-max align-items-center" style="background-image: url('{{ asset('img/'.$header->gambar) }}');"> -->
+        <div class="row height-max align-items-center" style="background-image: url('{{ asset('img/'.$header->gambar) }}');">
               <div class="col col-md-9 ml-auto text-right pr-5">
                       <h6 class="title-heading d-inline-block p-2 text-uppercase">{{ $header->slogan }}</h6>
                       <h2 class="text-uppercase my-2 title">{{ $header->judulmobil }}</h2>
@@ -139,7 +139,7 @@
           </h6>
           <div class="skills-underline"></div>
           <p class="w-75 mx-auto text-muted">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime dignissimos necessitatibus aut.
+            Explore a wide selection of all major car brands.
           </p>
         </div>
         <!-- end of single skill -->
@@ -153,7 +153,7 @@
           </h6>
           <div class="skills-underline"></div>
           <p class="w-75 mx-auto text-muted">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime dignissimos necessitatibus aut.
+            Enjoy free and helpful customer support services.
           </p>
         </div>
         <!-- end of single skill -->
@@ -167,7 +167,7 @@
           </h6>
           <div class="skills-underline"></div>
           <p class="w-75 mx-auto text-muted">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime dignissimos necessitatibus aut.
+            Experience our caring and dedicated service approach.
           </p>
         </div>
         <!-- end of single skill -->
@@ -181,7 +181,7 @@
           </h6>
           <div class="skills-underline"></div>
           <p class="w-75 mx-auto text-muted">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime dignissimos necessitatibus aut.
+            Find affordable pricing options that fit your budget.
           </p>
         </div>
         <!-- end of single skill -->
@@ -189,6 +189,7 @@
     </div>
   </section>
   <!-- end of skills section -->
+
 
   <!-- inventory section -->
     <section id="inventory" class="inventory py-5">
@@ -274,7 +275,7 @@
           <div class="question-text w-75">
             <h4 class="question-title text-capitalize font-weight-bold">are you looking for a car?</h4>
             <p class="question-info">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, ad.
+              Discover our wide selection of cars and find the perfect one for you.
             </p>
           </div>
         </div>
@@ -288,7 +289,7 @@
           <div class="question-text w-75">
             <h4 class="question-title text-capitalize font-weight-bold">do you want to sell a car?</h4>
             <p class="question-info">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, ad.
+              Sell your car hassle-free with our expert assistance and reach potential buyers.
             </p>
           </div>
         </div>
@@ -296,6 +297,7 @@
     </div>
   </section>
   <!-- end of question section -->
+
 
   <!-- featured section -->
   <section id="featured" class="featured py-5">
@@ -440,14 +442,21 @@
         <!-- end of single column -->
         <!-- single column -->
         <div class="col-8 mx-auto col-sm-6 col-md-4 my-3">
-          <div class="service py-5 pl-4">
+          <div class="service py-5 pl-4" onclick="openGoogleMaps()">
             <span class="service-icon">
-              <i class="fas fa-car-battery"></i>
+              <i class="fas fa-map-marked-alt"></i> <!-- Menggunakan ikon map dari FontAwesome -->
             </span>
-            <h6 class="text-capitalize service-title">battery</h6>
-            <h5 class="text-uppercase font-weight-bold">replacement</h5>
+            <h6 class="text-capitalize service-title">google maps</h6>
+            <h5 class="text-uppercase font-weight-bold">location</h5>
           </div>
         </div>
+
+        <script>
+          function openGoogleMaps() {
+            window.open('https://www.google.com/maps/place/Deina+motor/@-6.2281014,106.7760226,17z/data=!3m1!4b1!4m6!3m5!1s0x2e69f1ce9856ac85:0xd22eb75bf4804824!8m2!3d-6.2281067!4d106.7785975!16s%2Fg%2F11lds42rk5?entry=ttu', '_blank');
+          }
+        </script>
+
         <!-- end of single column -->
         <!-- single column -->
         <div class="col-8 mx-auto col-sm-6 col-md-4 my-3">
@@ -563,19 +572,19 @@
   <!-- footer -->
   <footer class="footer py-5" id="footer">
     <div class="footer-icons d-flex flex-wrap justify-content-around">
-      <a href="#" class="footer-icon">
+      <a href="https://www.facebook.com/share/PFhpdZMCpMFwpFPJ/?mibextid=qi2Omg" class="footer-icon">
         <i class="fab fa-facebook"></i>
       </a>
-      <a href="#" class="footer-icon">
+      <a href="https://www.instagram.com/deinamotor?igsh=Ym13aWZta2lzMjc5" class="footer-icon">
         <i class="fab fa-instagram"></i>
       </a>
-      <a href="#" class="footer-icon">
+      <a href="https://www.semuabis.com/deina-motor_1q-0818-839-770" class="footer-icon">
         <i class="fab fa-google-plus"></i>
       </a>
-      <a href="#" class="footer-icon">
+      <a href="https://x.com/InfoHonda" class="footer-icon">
         <i class="fab fa-twitter"></i>
       </a>
-      <a href="#" class="footer-icon">
+      <a href="https://www.linkedin.com/jobs/view/automotive-dealer-account-manager-at-armatus-dealer-uplift-llc-3936210466?position=1&pageNum=0&refId=DE49891PBQbSM%2BjyjDo8GQ%3D%3D&trackingId=jlEI88ZszNtmbRZqNpRKFQ%3D%3D&trk=public_jobs_jserp-result_search-card" class="footer-icon">
         <i class="fab fa-linkedin"></i>
       </a>
     </div>

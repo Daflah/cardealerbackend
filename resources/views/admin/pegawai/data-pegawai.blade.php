@@ -36,10 +36,12 @@
     <!-- Main content -->
     <div class="content">
         <div class="card card-info card-outline">
-            <div class="card-header">
-                <div class="card-tools">
-                    <a href="{{route('create-pegawai')}}" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
-                </div>
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <form action="{{ route('data-pegawai') }}" method="GET" class="form-inline">
+                    <input type="text" name="search" class="form-control" placeholder="Search by name" value="{{ request('search') }}">
+                    <button type="submit" class="btn btn-primary ml-2">Search</button>
+                </form>
+                <a href="{{route('create-pegawai')}}" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
             </div>
 
             <div class="card-body">
@@ -74,7 +76,7 @@
                 </table>
             </div>
             <div class="d-flex justify-content-center">
-                    {{ $dtPegawai->links() }}
+                    {{ $dtPegawai->appends(['search' => request('search')])->links() }}
             </div>
         </div>
       

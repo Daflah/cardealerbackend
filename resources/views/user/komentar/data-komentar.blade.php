@@ -36,7 +36,12 @@
     <!-- Main content -->
     <div class="content">
         <div class="card card-info card-outline">
-            
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <form action="{{ route('data-komentar') }}" method="GET" class="form-inline">
+                    <input type="text" name="search" class="form-control" placeholder="Search by name" value="{{ request('search') }}">
+                    <button type="submit" class="btn btn-primary ml-2">Search</button>
+                </form>
+            </div>
 
             <div class="card-body">
                 <table class="table table-bordered">
@@ -64,9 +69,9 @@
                             Tidak ada gambar
                           @endif
                         </td>
-                        <td>{{$komentar->nama}}</td>
-                        <td>{{$komentar->job}}</td>
-                        <td>{{$komentar->komentar}}</td>
+                        <td>{{ $komentar->nama }}</td>
+                        <td>{{ $komentar->job }}</td>
+                        <td>{{ $komentar->komentar }}</td>
                         <td>
                           <a href="{{ route('edit-komentar', $komentar->id) }}"><i class="fas fa-pen-to-square"></i></a> | 
                           <a href="{{ route('delete-komentar', $komentar->id) }}"><i class="fas fa-trash" style="color:red"></i></a>
@@ -76,7 +81,7 @@
                 </table>
             </div>
             <div class="d-flex justify-content-center">
-                    {{ $dtKomentar->links() }}
+                    {{ $dtKomentar->appends(['search' => request('search')])->links() }}
             </div>
         </div>
       

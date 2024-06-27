@@ -10,9 +10,16 @@ class KomentarController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $dtKomentar = Komentar::orderBy('id', 'asc')->paginate(5);
+        $search = $request->input('search');
+        
+        $dtKomentar = Komentar::query()
+            ->when($search, function ($query, $search) {
+                return $query->where('nama', 'like', "%{$search}%");
+            })
+            ->paginate(5);
+    
         return view('user.komentar.data-komentar', compact('dtKomentar'));
     }
 

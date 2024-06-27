@@ -12,7 +12,7 @@ class HeaderController extends Controller
      */
     public function index()
     {
-        $dtHeader = Header::orderBy('id', 'asc')->paginate(5);
+        $dtHeader = Header::orderBy('id', 'asc')->paginate(4);
         return view('admin.header.data-header', compact('dtHeader'));
     }
 

@@ -10,9 +10,16 @@ class PegawaiController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $dtPegawai = Pegawai::orderBy('id', 'asc')->paginate(5);
+        $search = $request->input('search');
+        
+        $dtPegawai = Pegawai::query()
+            ->when($search, function ($query, $search) {
+                return $query->where('nama', 'like', "%{$search}%");
+            })
+            ->paginate(5);
+    
         return view('admin.pegawai.data-pegawai', compact('dtPegawai'));
     }
 
