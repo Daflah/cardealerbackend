@@ -24,6 +24,7 @@ use App\Http\Controllers\PembelianController;
 |
 */
 
+
 // -------------------------------------- Bagian Pegawai --------------------------------------
 Route::get('/data-pegawai', [PegawaiController::class, 'index'])->name('data-pegawai');
 Route::get('/create-pegawai', [PegawaiController::class, 'create'])->name('create-pegawai');
