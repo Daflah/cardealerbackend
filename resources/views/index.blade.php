@@ -475,14 +475,15 @@
         <!-- end of single column -->
         <!-- single column -->
         <div class="col-8 mx-auto col-sm-6 col-md-4 my-3">
-          <a href="{{ route('roadside') }}" class="text-decoration-none">
-          <div class="service py-5 pl-4">
-            <span class="service-icon">
-              <i class="fas fa-car-crash"></i>
-            </span>
-            <h6 class="text-capitalize service-title">roadsidehaha</h6>
-            <h5 class="text-uppercase font-weight-bold">assistance</h5>
-          </div>
+            <a href="{{ route('roadside') }}" class="text-decoration-none">
+                <div class="service py-5 pl-4">
+                    <span class="service-icon">
+                        <i class="fas fa-tags"></i> <!-- Ikon untuk Discount -->
+                    </span>
+                    <h6 class="text-capitalize service-title">special</h6>
+                    <h5 class="text-uppercase font-weight-bold">discount</h5>
+                </div>
+            </a>
         </div>
         <!-- end of single column -->
       </div>

@@ -83,7 +83,7 @@
       <div class="price__grid">
         <div class="price__card">
           <h4>SILVER PACKAGE</h4>
-          <h3><sup>$</sup>35</h3>
+          <h3><sup>Rp</sup>35.000,00</h3>
           <p>Routine Maintenance</p>
           <p>Diagnostic Services</p>
           <p>Wheel Alignment</p>
@@ -95,7 +95,7 @@
         <div class="price__card">
           <div class="price__card__ribbon">BESTSELLER</div>
           <h4>PLATINUM PACKAGE</h4>
-          <h3><sup>$</sup>69</h3>
+          <h3><sup>Rp</sup>69.000,00</h3>
           <p>Routine Maintenance</p>
           <p>Diagnostic Services</p>
           <p>Engine Tune-Ups</p>
@@ -106,7 +106,7 @@
         </div>
         <div class="price__card">
           <h4>GOLD PACKAGE</h4>
-          <h3><sup>$</sup>39</h3>
+          <h3><sup>Rp</sup>39.000,00</h3>
           <p>Routine Maintenance</p>
           <p>Diagnostic Services</p>
           <p>Brake and Suspension</p>
