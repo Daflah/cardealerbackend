@@ -38,3 +38,7 @@ var slideIndex = 1;
             slides[slideIndex - 1].style.display = "block";
             dots[slideIndex - 1].className += " active";
         }
+        
+function changeImage(imageUrl) {
+    document.getElementById('featured-photo').src = imageUrl;
+    }

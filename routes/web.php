@@ -9,6 +9,7 @@ use App\Http\Controllers\HeaderController;
 use App\Http\Controllers\JualanController;
 use App\Http\Controllers\KomentarController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UnggulanMobilController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -74,6 +75,17 @@ Route::get('/edit-komentar/{id}', [KomentarController::class, 'edit'])->name('ed
 Route::post('/update-komentar/{id}', [KomentarController::class, 'update'])->name('update-komentar');
 Route::get('/delete-komentar/{id}', [KomentarController::class, 'destroy'])->name('delete-komentar');
 // -------------------------------------- Bagian Komentar --------------------------------------
+
+
+
+// -------------------------------------- Bagian Unggulan Mobil --------------------------------------
+Route::get('/data-unggulan', [UnggulanMobilController::class, 'index'])->name('data-unggulan');
+Route::get('/create-unggulan', [UnggulanMobilController::class, 'create'])->name('create-unggulan');
+Route::post('/simpan-unggulan', [UnggulanMobilController::class, 'store'])->name('simpan-unggulan');
+Route::get('/edit-unggulan/{id}', [UnggulanMobilController::class, 'edit'])->name('edit-unggulan');
+Route::post('/update-unggulan/{id}', [UnggulanMobilController::class, 'update'])->name('update-unggulan');
+Route::get('/delete-unggulan/{id}', [UnggulanMobilController::class, 'destroy'])->name('delete-unggulan');
+// -------------------------------------- Bagian Unggulan Mobil --------------------------------------
 
 
 
